@@ -1,0 +1,8 @@
+User-agent: *
+disallow: /
+allow: /index.html
+allow: /articles/
+disallow: /articles/ads/
+disallow: /articles/imgs/
+allow: /calendar/events.html
+allow: /calendar/pastevents.html
