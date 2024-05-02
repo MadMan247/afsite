@@ -1,0 +1,127 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #696969;
+    position: relative;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+}
+
+
+.event {
+    width: calc(33% - 20px); /* Four events per row with reduced space between */
+    margin: 5px;
+    padding: 5px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.event:hover {
+    transform: scale(1.05);
+}
+
+.event img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.to-top-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 20px;
+    display: none;
+}
+
+.to-top-icon.active {
+    display: block;
+}
+/* Existing CSS styles */
+
+.events-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    width:100%;
+    margin: 20px auto;
+
+}
+
+
+
+.event img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+.buttons {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+        }
+
+        .button {
+            text-decoration: none;
+            transition: background-color 0.1s;
+            display: inline-block;
+            
+            height: 20px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            line-height: 20px;
+            border-radius: 2px;
+            margin-right: 6px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #555;
+        }
+                 /* Style for the image and caption */
+/* Existing CSS styles */
+
+a {
+    text-decoration: none; /* Removes underline */
+    color: inherit; /* Maintains default text color */
+}
+    /* Style for the ad container */
+    .ad-container {
+      
+        height: 250px auto; /* Adjust to your desired height */
+        border-radius: 10px; /* Add curved edges */
+        display: grid;
+        place-items: center;
+        padding: 5px; /* Add padding around the ad content */
+        margin: 5px; /* Add margins to create space between ads */
+        position:relative;
+        bottom:0;
+       
+
+    }
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
