@@ -56,9 +56,10 @@ body {
     text-decoration: none;
 }
 .subitemabout {
-  width: 150px;
+  min-width: 200px;
+  width:250px;
   height: 100%;
-  
+  max-height: 100%
   padding: 1em;
   font-weight: 700;
   color: var(--clr-dark);
@@ -92,7 +93,34 @@ body {
         opacity: 0;
     }
 }
+        .buttons {
+            position: absolute;
+            border-radius: 10px;
+            height: 20px;
+            background-color: red;
+            top: 10px;
+            padding-bottom: 25px;
+            padding-left: 3px;
+        }
 
+        .button {
+            text-decoration: none;
+            transition: background-color 0.1s;
+            display: inline-block;
+        
+            height: 20px;
+            
+            color: #fff;
+            text-align: center;
+            line-height: 20px;
+            border-radius: 4px;
+            margin-right: 6px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            color: #555;
+        }
 /* END OF BASE STYLES */
 .container {
   display: flex;
