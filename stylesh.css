@@ -1,0 +1,135 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #444, #111);
+    color: #fff;
+}
+
+.container {
+    max-width: 800px;
+    min-width: 50%;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+header {
+    text-align: center;
+}
+
+.banner {
+    width: 100%;
+    height: auto;
+	border-radius: 8px;
+}
+
+nav {
+    background-color: #222;
+	border-radius: 8px;
+    border-top: 1px solid #444;
+    border-bottom: 1px solid #444;
+}
+
+.nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+	border-radius: 8px;
+    justify-content: space-around;
+	background: linear-gradient(to bottom, #333, #111);
+}
+
+.nav > li {
+    position: relative;
+}
+
+.nav a {
+    display: block;
+    padding: 15px;
+    color: #fff;
+    text-decoration: none;
+    text-shadow: 1px 1px 2px #000;
+    
+    border-radius: 5px;
+    
+}
+
+.nav a:hover {
+    background: #555;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #222;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown li a {
+    padding: 10px;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.nav > li:hover .dropdown {
+    display: block;
+}
+
+main {
+    padding: 20px 0;
+    text-align: center;
+}
+
+.content-block {
+    display: flex;
+    margin-bottom: 20px;
+	margin-top: 20px;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.test {
+	text-decoration: none;
+	color: #FFF;
+}
+.content-block img {
+    width: 300px;
+    height: auto;
+    margin-right: 20px;
+    border: 1px solid #555;
+    border-radius: 8px;
+}
+
+.content-block p {
+	min-width: 280px;
+    flex: 1;
+    text-align: justify;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    border-top: 1px solid #444;
+	font-size: 0.7rem;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+footer ul li {
+    margin: 0 10px;
+}
+
+footer ul li a {
+    color: #fff;
+    text-decoration: none;
+}
