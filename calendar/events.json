@@ -119,10 +119,40 @@
         "image": "./imgs/afmpp.jpg",
         "link": "#1"
     },
-
-
-
-
+    {
+        "date": "2024-06-14",
+        "time": "19:00",
+        "location": "Dumb Records, Springfield IL ",
+        "description": "A short-notice show featuring Acid Fog, Kids, Yard Waste, and Whitney Divine",
+        "image": "./imgs/afdrkyw.jpg",
+        "link": "#1"
+    },
+    {
+        "date": "2024-06-08",
+        "time": "18:00",
+        "location": "LOG Fest, Springfield IL ",
+        "description": "Acid Fog will be performing at LOG fest, in Springfield IL, at the Washington St Side Stage from 6:00 P.M. to 6:45 P.M.",
+        "image": "./imgs/aflf.jpg",
+        "link": "https://www.logmusicfest.org/"
+    },
+    {
+        "date": "2024-07-21",
+        "time": "19:00",
+        "location": "Dumb Recs, Springfield IL ",
+        "description": "The ultimate sludge show, with Acid Fog, Unthynck, and Martyr!",
+        "image": "./imgs/afmr.jpg",
+        "link": "#1"
+    },
+    {
+        "date": "2024-09-07",
+        "time": "17:45",
+        "location": "5529 Bunker Hill Rd, Centennial Park, Champaign IL ",
+        "description": "RESCHEDULED TO A LATER DATE The whole crew's here, Acid Fog, Reject Modernity, Metastasis, and Change of Heart. A Concert organized by Talon, with the goal of giving Into the Depths a show!",
+        "image": "./imgs/afcprm.jpg",
+        "link": "#1"
+    },
+	
+	
 
 
 

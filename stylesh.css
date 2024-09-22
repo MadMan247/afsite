@@ -1,5 +1,6 @@
 body {
     font-family: Arial, sans-serif;
+    font-size: 1em;
     margin: 0;
     padding: 0;
     background: linear-gradient(to bottom, #444, #111);
@@ -37,6 +38,7 @@ nav {
     display: flex;
 	border-radius: 8px;
     justify-content: space-around;
+    
 	background: linear-gradient(to bottom, #333, #111);
 }
 
@@ -50,9 +52,7 @@ nav {
     color: #fff;
     text-decoration: none;
     text-shadow: 1px 1px 2px #000;
-    
     border-radius: 5px;
-    
 }
 
 .nav a:hover {
@@ -82,6 +82,7 @@ nav {
 
 main {
     padding: 20px 0;
+    font-size: 1em;
     text-align: center;
 }
 
