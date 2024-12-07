@@ -45,5 +45,38 @@ function loadAdLinks() {
     }
 }
 
-loadAdLinks();
+async function convertToJson() {
 
+    let json = await fetch("https://acidfog.com/articles/adlinks.txt").then(res => res.text())
+        .then(text => {
+           const lines = text.split("\n");
+           let jsonObj = [];
+
+           lines.forEach((line) => {
+               const adString = line.split(' ');
+               const adObj = {
+                   adFile: adString[0],
+                   adLink: adString[1],
+                   adTitle: adString[2].replaceAll('_', ' ')
+               }
+               jsonObj.push(adObj);
+           });
+          return jsonObj;
+        })
+        .catch((err) => {
+            console.error(err);
+        });
+
+    console.log(JSON.stringify(json));
+}
+
+async function loadAds() {
+    await fetch("./../articles/adlinks.json").then(res => res.json())
+        .then(json => {
+            console.log(json[0]);
+        })
+}
+
+// loadAdLinks();
+
+loadAds();
