@@ -26,21 +26,21 @@
             <a href="/index.html" class="button">Index</a>
         </div>
     <main>
-        <div class="container">
+        <div class="container" style="gap: 2rem;">
             <div id="trivia-question" class="article">
                 <!-- Trivia question content will be inserted here -->
             </div>
             <form id="answers-form" class="article">
                 <div id="answers"></div>
-                <input type="submit" value="Submit Answer">
+                <input type="submit" value="Submit Answer" style="margin: 2rem;">
             </form>
-            <div id="elaboration" class="article">
+            <div id="elaboration" class="article" style="display: flex; opacity: 0; transition: opacity 0.5s ease;">
                 <!-- Elaboration content will be inserted here -->
             </div>
-            <button id="new-question-btn" style="display: none;">New Question</button> <!-- 'New Question' button inside the container -->
+            <button id="new-question-btn" style="display: block; opacity: 0; transition: opacity 0.5s ease;">New Question</button> <!-- 'New Question' button inside the container -->
         </div>
     </main>
-    <script src="trivias.js"></script>
+    <script src="trivias.js" defer></script>
     
 </body>
 </html>

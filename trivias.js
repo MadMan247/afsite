@@ -2,10 +2,11 @@ const triviaQuestion = document.getElementById('trivia-question');
 const answersForm = document.getElementById('answers-form');
 const answersDiv = document.getElementById('answers');
 const elaboration = document.getElementById('elaboration');
+const newQuestionButton = document.getElementById('new-question-btn');
 
-let correctAnswer;
-let randomLine;
-let newQuestionBtn; // Declare the 'New Question' button variable
+let currentQuestion;
+let trivia;
+let mixedAnswers;
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -14,81 +15,87 @@ function shuffleArray(array) {
     }
 }
 
-function displayTrivia() {
-    fetch('trivia/trivia.txt')
-        .then(response => response.text())
-        .then(data => {
-            const lines = data.split('\n');
-            randomLine = lines[Math.floor(Math.random() * (lines.length -1))].split('!');
-            const question = randomLine[0];
-            const answers = randomLine.slice(1, 5);
-            const elaborationCorrect = randomLine[5];
-            const elaborationIncorrect = randomLine[6];
+// Here in lies the newest of the implementations of this trivia game.
 
-            triviaQuestion.textContent = question;
+function displayNewTrivia() {
+    currentQuestion = trivia[Math.floor(Math.random() * trivia.length)];
 
-            shuffleArray(answers);
-            correctAnswer = answers.indexOf(randomLine[4]);
+    mixedAnswers = [currentQuestion.answers[0], currentQuestion.answers[1], currentQuestion.answers[2], currentQuestion.answers[3]];
+    shuffleArray(mixedAnswers);
 
-            answersDiv.innerHTML = '';
-            answers.forEach((answer, index) => {
-                const label = document.createElement('label');
-                label.innerHTML = `
-                    <input type="radio" name="answer" value="${index}">
-                    ${answer}
-                `;
-                answersDiv.appendChild(label);
-            });
-
-            newQuestionBtn.style.display = 'block'; // Show the 'New Question' button
-        })
-        .catch(error => console.error('Failed to load trivia: ', error));
-}
-
-answersForm.addEventListener('submit', function(event) {
-    event.preventDefault();
-    const selectedAnswer = document.querySelector('input[name="answer"]:checked');
-
-    if (selectedAnswer) {
-        const selectedValue = parseInt(selectedAnswer.value);
-
-        if (selectedValue === correctAnswer) {
-            elaboration.textContent = 'Correct! ' + randomLine[5];
-        } else {
-            elaboration.textContent = 'Incorrect! ' + randomLine[6];
-        }
-
-        elaboration.style.display = 'block';
-        elaboration.style.opacity = 0;
-        fadeIn(elaboration);
-    }
-});
-
-document.addEventListener("DOMContentLoaded", function() {
-    newQuestionBtn = document.createElement('button');
-    newQuestionBtn.textContent = 'New Question';
-    newQuestionBtn.style.display = 'none';
-    newQuestionBtn.id = 'new-question-btn'; // Set the ID of the button
-
-    newQuestionBtn.addEventListener('click', function() {
-        elaboration.textContent = '';
-        elaboration.style.display = 'none';
-        displayTrivia();
+    triviaQuestion.textContent = currentQuestion.question;
+    answersDiv.innerHTML = '';
+    elaboration.textContent = '';
+    mixedAnswers.forEach((answer, index) => {
+        const label = document.createElement('label');
+        label.innerHTML = `
+            <input type="radio" name="answer" value="${index}">
+            ${answer}
+            </input>
+        `;
+        answersDiv.appendChild(label);
     });
 
-    document.body.appendChild(newQuestionBtn);
-});
-
-function fadeIn(element) {
-    let op = 0.1;  // initial opacity
-    const timer = setInterval(function() {
-        if (op >= 1) {
-            clearInterval(timer);
-        }
-        element.style.opacity = op;
-        op += op * 0.1;
-    }, 50);
+    hideNewQuestionButton();
+    hideElaboration();
 }
 
-displayTrivia(); // Display the first trivia question immediately
+function checkAnswer(e) {
+    e.preventDefault();
+    const selectedAnswer = document.querySelector(`input[name='answer']:checked`);
+
+    console.log("Let's look at that answer boy, you selected: ", mixedAnswers[parseInt(selectedAnswer.value)]);
+
+
+    if (mixedAnswers[parseInt(selectedAnswer.value)] === currentQuestion.answers[3]) {
+        elaboration.innerHTML =
+            `
+            <h4>~Correct~</h4>
+            <p>${currentQuestion.correctResponse}</p>
+            `
+        elaboration.textContent = `~Correct~ ${currentQuestion.correctResponse}`;
+    } else {
+        elaboration.textContent = `~Incorrect~ ${currentQuestion.incorrectResponse}`
+    }
+    displayElaboration();
+    displayNewQuestionButton();
+}
+
+function displayNewQuestionButton() {
+    newQuestionButton.style.opacity = '1';
+    newQuestionButton.style.pointerEvents = 'auto';
+}
+
+function hideNewQuestionButton() {
+    newQuestionButton.style.opacity = '0';
+    newQuestionButton.style.pointerEvents = 'none';
+}
+
+function displayElaboration() {
+    elaboration.style.opacity  = '1';
+}
+
+function hideElaboration() {
+    elaboration.style.opacity ='0';
+}
+
+async function triviaJson() {
+    hideElaboration();
+    hideNewQuestionButton();
+
+    trivia = await fetch("./trivia/trivia.json")
+        .then((response) => {return response.json()})
+        .catch(err => console.error(err));
+
+    displayNewTrivia();
+
+    answersForm.addEventListener('submit', checkAnswer);
+    newQuestionButton.addEventListener('click', () => displayNewTrivia());
+
+}
+
+
+// displayTrivia(); // Display the first trivia question immediately
+
+triviaJson();
 
