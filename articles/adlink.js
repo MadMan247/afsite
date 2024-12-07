@@ -73,14 +73,14 @@
 async function loadAds() {
     await fetch("/articles/adlinks.json").then(res => res.json())
         .then(json => {
-            console.log(json);
+
             const adContainers = document.querySelectorAll(".ad-container");
             adContainers.forEach(container => {
                 const randInt = Math.floor(Math.random() * json.length);
 
                 let randomAd = json.splice(randInt, 1);
                 randomAd = randomAd[0];
-                console.log(randomAd);
+
                 container.innerHTML = ""; //prep with nothing
 
                 //create and add properties to anchor and image
