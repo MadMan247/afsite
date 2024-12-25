@@ -157,13 +157,17 @@ body {
 }
 
 header {
+    display: grid;
+    place-items: center;
     background-color: #333;
     color: #fff;
     padding: 10px;
     text-align: center;
+    justify-content: space-around;
 }
 
 nav {
+    max-width: 800px;
     background-color: #222;
     border-radius: 8px;
     border-top: 1px solid #444;
@@ -171,6 +175,7 @@ nav {
 }
 
 .nav {
+    max-width: 800px;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -220,7 +225,7 @@ nav {
 }
 
 main {
-    padding: 20px 0;
+    padding: 0; /* was "20px 0" */
     font-size: 1em;
     text-align: center;
 }
