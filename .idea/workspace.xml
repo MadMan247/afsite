@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46cb8f8d-9c62-4935-b6ae-97fa0d3adb13" name="Changes" comment="Implement Swedish Meatball backbone" />
-    <list id="a9071cbf-8679-44ce-a20c-4e69ae905785" name="Changes by Edward" comment="">
-      <change beforePath="$PROJECT_DIR$/articles/AFcast.html" beforeDir="false" afterPath="$PROJECT_DIR$/articles/AFcast.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/articles/ArticleList.html" beforeDir="false" afterPath="$PROJECT_DIR$/articles/ArticleList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+    <list default="true" id="46cb8f8d-9c62-4935-b6ae-97fa0d3adb13" name="Changes" comment="Implement Swedish Meatball backbone">
+      <change afterPath="$PROJECT_DIR$/calendar/imgs/afdrmec.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calendar/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/events.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prefetch.js" beforeDir="false" afterPath="$PROJECT_DIR$/prefetch.js" afterDir="false" />
     </list>
+    <list id="a9071cbf-8679-44ce-a20c-4e69ae905785" name="Changes by Edward" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,7 +37,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/MadMan247/afsite.git&quot;,
-    &quot;accountId&quot;: &quot;7398f066-a024-4eda-a6df-e25fa531bd3e&quot;
+    &quot;accountId&quot;: &quot;dbdf5b26-bcb7-4de4-a396-dbca0b4a1f01&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -48,25 +49,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Edward\WebstormProjects\afsite\calendar\imgs" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-WS-243.22562.112" />
+        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-WS-243.21565.180" />
       </set>
     </attachedChunks>
   </component>
@@ -80,6 +86,8 @@
       <updated>1735024475670</updated>
       <workItem from="1735024477000" duration="18457000" />
       <workItem from="1735115816370" duration="3910000" />
+      <workItem from="1735342831431" duration="737000" />
+      <workItem from="1735782636915" duration="808000" />
     </task>
     <task id="LOCAL-00001" summary="Implement Swedish Meatball backbone">
       <option name="closed" value="true" />
@@ -95,8 +103,20 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Implement Swedish Meatball backbone" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement Swedish Meatball backbone" />
+    <MESSAGE value="link to: prefetch on that thang" />
+    <option name="LAST_COMMIT_MESSAGE" value="link to: prefetch on that thang" />
   </component>
 </project>

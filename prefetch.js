@@ -21,5 +21,7 @@ function prefetch(url) {
     link.href = url;
     document.head.appendChild(link);
 
+    //Yabba Dabba Do, check if that link is directed toward a local resource. If foreign, preconnect?
+
     console.log(`Prefetched: ${url}`);
 } //Bless Up! On my momma! ChatGPT 4 tha win!
