@@ -168,7 +168,14 @@
         "image": "./imgs/afdrmec.jpg",
         "link": "#1"
     },
-
+    {
+        "date": "2025-01-11",
+        "time": "19:00",
+        "location": "Pizza Records, Jacksonville IL",
+        "description": "I only know that they're performing for an hour and a half, and Ethan is supposed to make me a flyer.",
+        "image": "./imgs/MIA.jpg",
+        "link": "#1"
+    },
 
 
 

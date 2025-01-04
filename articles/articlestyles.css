@@ -23,7 +23,7 @@
 
         .article-info {
             display: flex;
-            align-items: center;
+
         }
 
         .user-icon {
@@ -111,6 +111,9 @@
         .article-image {
             border-radius: 20px;
             max-width: 60%; /* Ensure the image fits within the container */
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .caption {
