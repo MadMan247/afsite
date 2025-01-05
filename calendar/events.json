@@ -172,7 +172,23 @@
         "date": "2025-01-11",
         "time": "19:00",
         "location": "Pizza Records, Jacksonville IL",
-        "description": "I only know that they're performing for an hour and a half, and Ethan is supposed to make me a flyer.",
+        "description": "I only know that they're performing for an hour and a half, and Ethan is supposed to make me a flyer. This flyer is the one Pizza Records made.",
+        "image": "./imgs/afprnr.jpg",
+        "link": "#1"
+    },
+    {
+        "date": "2025-02-15",
+        "time": "19:00",
+        "location": "Pizza Records, Jacksonville IL",
+        "description": "This is a good bit in the future, more information to come.",
+        "image": "./imgs/MIA.jpg",
+        "link": "#1"
+    },
+    {
+        "date": "2025-03-29",
+        "time": "19:00",
+        "location": "Dumb Recs, Springfield IL",
+        "description": "This is a good bit into the future. More information to come.",
         "image": "./imgs/MIA.jpg",
         "link": "#1"
     },
