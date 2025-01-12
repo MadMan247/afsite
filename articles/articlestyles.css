@@ -1,168 +1,171 @@
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #696969;
-        }
+:root {
+    scroll-behavior: smooth;;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #696969;
+}
 
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
-        }
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
 
-        .container {
-            max-width: 800px;
-            margin: 10px auto;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            padding: 20px;
-        }
+.container {
+    max-width: 800px;
+    margin: 10px auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+}
 
-        .article-info {
-            display: flex;
+.article-info {
+    display: flex;
 
-        }
+}
 
-        .user-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-image: url('usrimg.png'); 
-            background-color: #333;
-            margin-right: 10px;
-        }
+.user-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-image: url('usrimg.png');
+    background-color: #333;
+    margin-right: 10px;
+}
 
-        .user-name {
-            font-weight: bold;
-        }
+.user-name {
+    font-weight: bold;
+}
 
-        .article-content {
-            margin-top: 20px;
-        }
-        .buttons {
-            position: absolute;
-            left: 10px;
-            top: 10px;
-        }
+.article-content {
+    margin-top: 20px;
+}
+.buttons {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
 
-        .button {
-            text-decoration: none;
-            transition: background-color 0.1s;
-            display: inline-block;
-            
-            height: 20px;
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            line-height: 20px;
-            border-radius: 2px;
-            margin-right: 6px;
-            cursor: pointer;
-        }
+.button {
+    text-decoration: none;
+    transition: background-color 0.1s;
+    display: inline-block;
 
-        .button:hover {
-            background-color: #555;
-        }
-        .buttong {
-            text-decoration: none;
-            transition: background-color 0.1s;
-            display: inline-block;
-            
-            height: 30px;
-            background-color: #cae8d2;
-            color: #000;
-            text-align: center;
-            line-height: 30px;
-            border-radius: 5px;
-            margin-right: 12px;
-            padding: 0px 6px;
-            border: inset;
-            cursor: pointer;
-        }
+    height: 20px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    line-height: 20px;
+    border-radius: 2px;
+    margin-right: 6px;
+    cursor: pointer;
+}
 
-        .buttong:hover {
-            background-color: #79bd8b
-        }
-		.pbuttong {
-            text-decoration: none;
-            transition: background-color 0.1s;
-            display: inline-flex;
-			margin-bottom: 8px;
-            align-items: center;
-            height: 30px;
-            background-color: #cae8d2;
-            color: #000;
-            text-align: center;
-            line-height: 30px;
-            border-radius: 5px;
-            margin-right: 12px;
-            padding: 0px 6px;
-            border: inset;
-            cursor: pointer;
-        }
+.button:hover {
+    background-color: #555;
+}
+.buttong {
+    text-decoration: none;
+    transition: background-color 0.1s;
+    display: inline-block;
 
-        .pbuttong:hover {
-            background-color: #79bd8b
-        }
-                 /* Style for the image and caption */
-        .article-image {
-            border-radius: 20px;
-            max-width: 60%; /* Ensure the image fits within the container */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    height: 30px;
+    background-color: #cae8d2;
+    color: #000;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 5px;
+    margin-right: 12px;
+    padding: 0px 6px;
+    border: inset;
+    cursor: pointer;
+}
 
-        .caption {
-            font-size: 0.8rem;
-            color: #777;
-        }
+.buttong:hover {
+    background-color: #79bd8b
+}
+.pbuttong {
+    text-decoration: none;
+    transition: background-color 0.1s;
+    display: inline-flex;
+    margin-bottom: 8px;
+    align-items: center;
+    height: 30px;
+    background-color: #cae8d2;
+    color: #000;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 5px;
+    margin-right: 12px;
+    padding: 0px 6px;
+    border: inset;
+    cursor: pointer;
+}
+
+.pbuttong:hover {
+    background-color: #79bd8b
+}
+         /* Style for the image and caption */
+.article-image {
+    border-radius: 20px;
+    max-width: 60%; /* Ensure the image fits within the container */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.caption {
+    font-size: 0.8rem;
+    color: #777;
+}
 
 
-        /* Style the hyperlink to remove underlines and look like a button */
-        .article a {
-            text-decoration: none;
-            display: block;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #fff;
-            color: #333;
-            transition: background-color 0.3s;
-        }
+/* Style the hyperlink to remove underlines and look like a button */
+.article a {
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    transition: background-color 0.3s;
+}
 
-        .article a:hover {
-            background-color: #f0f0f0;
-        }
+.article a:hover {
+    background-color: #f0f0f0;
+}
 
-        .article-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 0;
-        }
+.article-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+}
 
-        .article-meta {
-            font-size: 0.9rem;
-            color: #777;
-        }
-    /* Style for the ad container */
-    .ad-container {
-      
-        height: auto; /* Adjust to your desired height */
-        border-radius: 10px; /* Add curved edges */
-        display: grid;
-        place-items: center;
-        padding: 5px; /* Add padding around the ad content */
-        margin: 5px; /* Add margins to create space between ads */
-
+.article-meta {
+    font-size: 0.9rem;
+    color: #777;
     }
-    .youtube-video {
-        aspect-ratio: 16 / 9;
-        width: 100%;
-    }
+/* Style for the ad container */
+.ad-container {
+
+    height: auto; /* Adjust to your desired height */
+    border-radius: 10px; /* Add curved edges */
+    display: grid;
+    place-items: center;
+    padding: 5px; /* Add padding around the ad content */
+    margin: 5px; /* Add margins to create space between ads */
+
+}
+.youtube-video {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+}
 sup {
     font-size: 0.8em; /* Adjust the size as needed */
     vertical-align: super;

@@ -4,6 +4,7 @@
   --clr-light: #f1f5f9;
   --clr-accent: #065c0e;
   --clr-mid: #696969;
+    scroll-behavior: smooth;
 }
 
 *,
