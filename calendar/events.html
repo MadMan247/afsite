@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+<script type="text/javascript" defer>
+  function getCurrentYear() {
+    return new Date().getFullYear();
+  }
+</script>
   <head>
     <meta charset="UTF-8">
     <title>Acid Fog Upcoming Event Calendar</title>
@@ -45,10 +50,14 @@
     </main>
     <!-- Footer section -->
     <footer>
-      <p>&copy; 2023 Acid Fog. All rights reserved.</p>
+      <p>&copy; <span id="est"></span> Acid Fog. All rights reserved.</p>
     </footer>
     <a href="#" class="to-top-icon">↑</a>
 
-    <script src="/articles/adlink.js" defer></script>
+
   </body>
+<script src="/articles/adlink.js" defer> </script>
+<script type="text/javascript">
+  document.getElementById('est').textContent = getCurrentYear();
+</script>
 </html>

@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+<script type="text/javascript" defer>
+  function getCurrentYear() {
+    return new Date().getFullYear();
+  }
+</script>
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.6">
@@ -124,10 +129,13 @@
           <li><a
               href="#"
               title="Yes, this is ours, and not yours."
-            >All Rights Reserved ©2024</a></li>
+            >All Rights Reserved ©<span id="est"></span></a></li>
           <li><a href="./sitemap_4432965.html" title="Who the actual fuck uses sitemaps anymore? Seriously. I'm putting this here half as a fucking joke. I mean, why not just navigate? It's really not that complicated. And this site map only includes uninteresting shit that's on this subdomain. Nothing from anything interesting, like the peer.acidfog.com site.">Sitemap?</a></li>
         </ul>
       </footer>
     </div>
   </body>
+<script>
+  document.getElementById('est').textContent = getCurrentYear();
+</script>
 </html>

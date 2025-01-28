@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <head>
+  <script type="text/javascript" defer>
+    function getCurrentYear() {
+      return new Date().getFullYear();
+    }
+  </script>
   <meta charset="UTF-8">
   <title>Acid Fog Past Events</title>
   <meta
@@ -45,9 +50,12 @@
   </main>
   <!-- Footer section -->
   <footer>
-    <p>&copy; 2023 Acid Fog. All rights reserved.</p>
+    <p>&copy; <span id="est"></span> Acid Fog. All rights reserved.</p>
   </footer>
   <a href="#" class="to-top-icon">↑</a>
   <script src="pastevents.js"></script>
   <script src="/articles/adlink.js" defer></script>
+  <script type="text/javascript">
+    document.getElementById('est').textContent = getCurrentYear();
+  </script>
 </body>
