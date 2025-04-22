@@ -1,0 +1,60 @@
+main {
+    width: 100%;
+}
+
+.article-list {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: center;
+    align-items: center;
+    border-bottom: 0.1rem solid grey;
+    padding-bottom: 0.25rem;
+
+    height: 100dvh;
+    transition: 400ms ease;
+}
+
+.article-preview {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    border: 0.1rem solid black;
+    padding: 0.5rem;
+}
+
+.article-preview button {
+    position: absolute;
+
+    height: 100%;
+    width: 100%;
+
+    background: transparent;
+    border: none;
+}
+
+.article-preview h3 {
+    font-size: 1.2rem;
+}
+
+.article-container {
+    display: flex;
+
+    width: 100%;
+
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 0.5rem;
+}
+
+.current-article {
+    border: 0.1rem solid grey;
+    max-width: 75%;
+    padding: 10%;
+}
+

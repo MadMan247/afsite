@@ -1,0 +1,188 @@
+/* Place all global styles here this time, silly goose */
+
+:root {
+    --primary: something;
+    --secondary: something;
+    --tertiary: something;
+
+    --light: #DDD;
+    --gradient-med: #444;
+    --gradient-drk: #111;
+
+    --nav-bg: #222;
+
+
+    --text: #fff;
+    --font-default: Arial, sans-serif;
+    --font-size: 1rem;
+
+}
+
+body {
+    font-family: var(--font-default);
+    font-size: var(--font-size);
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, var(--gradient-med), var(--gradient-drk));
+    color: var(--text);
+}
+
+.container {
+    max-width: 60rem;
+    min-width: 50%;
+    margin: 0 auto;
+    padding: 1rem;
+    /*TODO: check if padding is good*/
+}
+
+header {
+    text-align: center;
+    /*contains banner, nav bar, drop downs*/
+}
+
+.banner {
+    width: 100%;
+    height: auto;
+    border-radius: .5rem;
+}
+nav {
+    /*applies to the dropdown selections*/
+    /*background-color: var(--nav-bg);*/
+    border-radius: .5rem;
+    border-top: .2rem solid var(--gradient-med);
+    border-bottom: .2rem solid var(--gradient-med);
+}
+
+.nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    border-radius: .5rem;
+    justify-content: space-around;
+    /*TODO: Revisit. Not a huge fan of there being so much free space around the buttons. Flex-grow?*/
+    background: linear-gradient(to bottom, var(--gradient-med), var(--gradient-drk));
+}
+
+.nav > li {
+    position: relative;
+}
+
+.nav a {
+    display: block;
+    padding: 1rem;
+    color: var(--text);
+    text-decoration: none;
+    text-shadow: .1rem .1rem .2rem black;
+    border-radius: .4rem;
+    z-index: 5;
+}
+
+.nav a:hover {
+    background: var(--gradient-med);
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--nav-bg);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    z-index: 5;
+}
+
+.dropdown li a {
+    /*TODO: See if padding is fine*/
+    padding: .75rem;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.nav > li:hover .dropdown {
+    display: block;
+}
+
+main {
+    /*TODO: See if padding is needed*/
+    padding: 1.25rem 0;
+    font-size: var(--font-size);
+    text-align: center;
+}
+
+.content-block {
+    display: flex;
+    margin-bottom: 1.25rem;
+    margin-top: 1.25rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+/*TODO: Remove?*/
+.test {
+    text-decoration: none;
+    color: var(--text);
+}
+.content-block img {
+    width: 19rem;
+    height: auto;
+    margin-right: 1.25rem;
+    border: .2rem solid var(--gradient-med);
+    border-radius: .5rem;
+}
+
+.content-block p {
+    min-width: 18rem;
+    flex: 1;
+    text-align: justify;
+}
+
+footer {
+    /*TODO: Why so much padding?!*/
+    text-align: center;
+    padding: .75rem 0;
+    border-top: .2rem solid var(--gradient-med);
+    font-size: 0.7rem;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+footer ul li {
+    margin: 0 .75rem;
+}
+
+footer ul li a {
+    color: var(--text);
+    text-decoration: none;
+}
+.content-image {
+    display: flex;
+    height: fit-content;
+    width: fit-content;
+    position: relative;
+}
+
+.hover-img {
+    opacity: 0;
+    height: 0;
+    width: 0;
+    /*transform: scale(1.05);*/
+    object-fit: cover;
+    position: absolute;
+}
+
+.content-image:hover .hover-img {
+    transition: opacity 400ms ease;
+    opacity: 1;
+    height: calc(100% - .4rem);
+    width: calc(100% - 1.65rem);
+    overflow: hidden;
+}

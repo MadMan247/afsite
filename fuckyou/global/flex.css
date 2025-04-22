@@ -1,0 +1,168 @@
+/* BASE STYLES */
+:root {
+  --clr-dark: #5c0806;
+  --clr-light: #f1f5f9;
+  --clr-accent: #065c0e;
+  --clr-mid: #696969;
+    scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  /*word-spacing: 1.4px;*/
+  font-family: "Roboto", sans-serif;
+  color: var(--clr-dark);
+  background-color: var(--clr-mid);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.container {
+  min-width: 60%;
+  width: 62.5rem;
+  min-height: 100vh;
+  
+  margin: 0 auto;
+  border: 4px solid var(--clr-dark);
+  border-radius: .75rem;
+  background-image: url("../data/images/bucket/irsbg.jpg");
+  background-color: var(--clr-light);
+  background-repeat: repeat;
+  background-size: contain;
+  align-items: flex-start;
+}
+
+.item {
+  width: 100%;
+  min-height: 22rem;
+  /*TODO: Padding, again.*/
+  padding: 2rem;
+  font-weight: 700;
+  color: var(--clr-light);
+  text-align: center;
+  border: 0 solid var(--clr-accent);
+  border-radius: .75rem;
+}
+.item a {
+    text-decoration: none;
+}
+.subitemabout {
+  min-width: 12.5rem;
+  width:15.5rem;
+  height: 100%;
+  max-height: 100%;
+  padding: 1em;
+  font-weight: 700;
+  color: var(--clr-dark);
+  text-align: center;
+  border: .25rem solid var(--clr-accent);
+  border-radius: .75rem;
+  flex-grow: 1;
+  flex-direction: column;
+}
+.subitemimg {
+  min-width: 22rem;
+  min-height: 19rem;
+  background-color: #fb7185;
+  
+  font-weight: 700;
+  color: var(--clr-light);
+  text-align: center;
+  border: 0 solid var(--clr-accent);
+  border-radius: .75rem;
+  flex-grow: 0;
+}
+.blink {
+    animation: blinker 1.2s linear infinite;
+    color: red;
+    font-size: 2.5em;
+    /* Larger, responsive font size */
+    margin-bottom: .3rem;
+}
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+        .buttons {
+            position: absolute;
+            border-radius: .75rem;
+            height: 1.25rem;
+            background-color: red;
+            top: .75rem;
+            padding-bottom: 1.75rem;
+            padding-left: .25rem;
+        }
+
+        .button {
+            text-decoration: none;
+            transition: background-color 0.1s;
+            display: inline-block;
+        
+            height: 1.25rem;
+            
+            color: #fff;
+            text-align: center;
+            line-height: 1.25rem;
+            border-radius: .25rem;
+            margin-right: .4rem;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            color: #555;
+        }
+/* END OF BASE STYLES */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  
+}
+.item {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5em;
+
+}
+.item-2 {
+flex-wrap: wrap-reverse;
+align-items:start;
+
+}
+
+
+.container {
+  display: flex;
+}
+
+.to-top-icon {
+    position: fixed;
+    bottom: 1.25rem;
+    right: 1.25rem;
+    background-color: #333;
+    color: #fff;
+    padding: .75rem 1rem;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 1.25rem;
+    display: none;
+}
+
+.to-top-icon.active {
+    display: block;
+}
+
