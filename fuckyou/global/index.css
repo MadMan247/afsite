@@ -65,6 +65,7 @@ nav {
 }
 
 .nav > li {
+    flex-grow: 1;
     position: relative;
 }
 
@@ -80,6 +81,9 @@ nav {
 
 .nav a:hover {
     background: var(--gradient-med);
+}
+.nav a:active {
+    background: var(--light);
 }
 
 .dropdown {
