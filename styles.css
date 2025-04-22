@@ -1,22 +1,3 @@
-/* Add the following to your existing styles.css */
-
-.parallax-container {
-  position: relative;
-  overflow: hidden;
-  height: 80vh;
-}
-
-
-
-.parallax-image {
-  position: absolute;
-  background-image: url('/siteimage/img1.jpg');
-  background-size: 100%;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 120%;
-  z-index: -1;
-}
 
 .header-text {
   position: relative;
@@ -25,49 +6,6 @@
   transform: translateY(-50%);
   font-size: 3rem;
   font-weight: bold;
-}
-/* Add the following to your existing styles.css */
-
-nav {
-  display: flex;
-  justify-content: center;
-  background-color: #A30043;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-}
-
-nav ul {
-  list-style-type: none;
-  padding: 0;
-  display: flex;
-  align-items: center;
-}
-
-nav li {
-  margin: 0 1rem;
-  padding: 0.5rem 0;
-  border-radius: 5px 5px 0 0;
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
-nav a {
-  color: #fff;
-  text-decoration: none;
-  display: block;
-  padding: 0.25rem 0.5rem;
-}
-
-nav li.active, nav li:hover {
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
-nav li.active a {
-  color: #11A318;
-  text-shadow: 0 0 10px #2BFF36, 0 0 20px #11F01C;
 }
 /* Add the following to your existing styles.css */
 
@@ -99,7 +37,6 @@ h2 {
 }
 body {
   font-family: Arial, sans-serif;
-  background-color: #1f1f1f;
   color: #fff;
   margin: 0; /* Add this line to remove the white outline */
   padding: 0;
@@ -111,3 +48,35 @@ header, footer {
 }
 
 
+html {
+  display: grid;
+  place-items: center;
+
+  min-height: 100%;
+  width: 100%;
+  position: relative;
+
+  margin: 0 auto;
+
+  background: linear-gradient(to bottom, #444, #111);
+}
+
+main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+  text-wrap: wrap;
+  text-align: center;
+
+  background: transparent;
+}
+a {
+  text-decoration: dashed underline;
+  color: #11A318;
+}
+main h1, main p {
+  max-width: 75%;
+}

@@ -1,4 +1,9 @@
 /*This is the stylesheet for the home page and the home page only*/
+html {
+    min-height: 100%;
+    max-width: 100%;
+}
+
 body {
     font-family: Arial, sans-serif;
     font-size: 1em;
@@ -54,6 +59,7 @@ nav {
     text-decoration: none;
     text-shadow: 1px 1px 2px #000;
     border-radius: 5px;
+    z-index: 5;
 }
 
 .nav a:hover {
@@ -69,6 +75,7 @@ nav {
     list-style: none;
     padding: 0;
     margin: 0;
+    z-index: 5;
 }
 
 .dropdown li a {
@@ -134,4 +141,27 @@ footer ul li {
 footer ul li a {
     color: #fff;
     text-decoration: none;
+}
+.content-image {
+    display: flex;
+    height: fit-content;
+    width: fit-content;
+    position: relative;
+}
+
+.hover-img {
+    opacity: 0;
+    height: 0;
+    width: 0;
+    /*transform: scale(1.05);*/
+    object-fit: cover;
+    position: absolute;
+}
+
+.content-image:hover .hover-img {
+    transition: opacity 400ms ease;
+    opacity: 1;
+    height: 100%;
+    width: calc(100% - 22px);
+    overflow: hidden;
 }
