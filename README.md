@@ -1,4 +1,4 @@
-#ACIDFOG.COM
+# ACIDFOG.COM
 
 This is a website for the band Acid Fog.
 
