@@ -18,6 +18,11 @@
 
 }
 
+html {
+    margin: 0 auto;
+    min-height: 100%;
+}
+
 body {
     font-family: var(--font-default);
     font-size: var(--font-size);

@@ -1,20 +1,26 @@
 import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
 
+const jsonPath = '/data/articles/index.json';
+const listPath = '/articles/list';
+
 export async function loadArticle(title, id) {
     document.title = title;
     const articleRender = document.getElementById('current-article');
 
-    fetch(`/fuckyou/articles/list/${id}`).then((res) => {
+    fetch(`${listPath}/${id}`).then((res) => {
        return res.text();
     }).then((md) => {
         articleRender.innerHTML = marked.parse(md);
     });
+
+    document.getElementById('article-list').style.animationPlayState = 'running';
+    document.getElementById('article-container').style.animationPlayState = 'running';
 }
 
 export async function showArticles() {
     const main = document.getElementById("article-list");
 
-    fetch("/fuckyou/data/articles/index.json").then((res) => {
+    fetch(jsonPath).then((res) => {
         return res.json();
     }).then((list) => {
         for (let item of list) {
