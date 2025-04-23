@@ -21,62 +21,12 @@
     <script defer src="/prefetch.js"></script>
 
     <script>
+        /*being so for real, this entire section is stupid.*/
+        /*I think it would be much much much smarter to assume legacy, but run the modern first.*/
+        /*If modern runs, do not run legacy. GG EZ PZ*/
+        //TODO: change this to be less ridiculous without letting darky know <3
         (function() {
             'use strict';
-
-            /**
-             * Checks if the browser lacks certain modern features OR has a specific legacy UA string.
-             * @returns {boolean} True if the browser appears to be legacy, false otherwise.
-             */
-            function isLegacyBrowser() {
-                console.log("Performing legacy browser check...");
-
-                // --- Part 1: Feature Detection (Catches generally older browsers) ---
-
-                // 1. Check for fundamental ES6 features
-                if (typeof Promise === 'undefined' || typeof Map === 'undefined' || typeof Set === 'undefined') {
-                    console.log("Legacy Reason: Missing Promise, Map, or Set.");
-                    return true;
-                }
-
-                // 2. Check for fetch API
-                if (typeof fetch === 'undefined') {
-                    console.log("Legacy Reason: Missing fetch API.");
-                    return true;
-                }
-
-                // 3. Check for newer JS syntax support
-                try {
-                    new Function('async () => {}');
-                    new Function('const obj = {}; return obj?.prop;');
-                    new Function('const val = null; return val ?? "default";')();
-                } catch (e) {
-                    console.log("Legacy Reason: Syntax error testing modern JS features.", e.message);
-                    return true;
-                }
-
-                // --- Part 2: Specific User Agent Sniffing (Targets Pale Moon/SeaMonkey) ---
-                // WARNING: UA sniffing is less reliable than feature detection, but necessary here.
-                try {
-                    // Get the user agent string (provide fallbacks for unusual environments)
-                    const ua = navigator.userAgent || navigator.vendor || window.opera;
-
-                    // Check if the UA string contains "PaleMoon" or "SeaMonkey" (case-insensitive)
-                    if (ua && /PaleMoon|SeaMonkey/i.test(ua)) {
-                        console.log("Legacy Reason: Explicit User Agent match (PaleMoon or SeaMonkey).");
-                        return true; // Force legacy for these specific UAs
-                    }
-                } catch (e) {
-                    // Log an error if we can't even access the userAgent (highly unlikely in browsers)
-                    console.warn("Could not access User Agent string for legacy check:", e);
-                }
-
-
-                // --- Conclusion ---
-                // If none of the above conditions triggered, assume it's modern enough.
-                console.log("Browser appears modern (passed feature checks and UA sniff).");
-                return false;
-            }
 
             /**
              * Creates a <script> tag and appends it to the <head>.
@@ -87,16 +37,24 @@
                 var script = document.createElement('script');
                 script.src = src;
                 script.defer = true; // Or async=true, or remove both as needed
-                script.type = "module";
+                script.type = "module"; //<- needed to prevent an error
                 document.head.appendChild(script);
             }
 
-            // --- Main Execution ---
-            if (isLegacyBrowser()) {
-                loadScript('/articles/articles-legacy.js');
-            } else {
-                loadScript('/articles/articles.js');
+            function isModernBrowser() {
+                try {
+                    new Function('async function test() {}')(); // test for async function support
+                    return true;
+                } catch (e) {
+                    return false;
+                }
             }
+
+
+            loadScript('/articles/articles.js');
+
+            loadScript('/articles/articles-legacy.js');
+
 
         })();
     </script>
