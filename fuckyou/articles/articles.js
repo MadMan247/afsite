@@ -1,52 +1,110 @@
 import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
+import { loadAds } from "/global/adlink.js";
 
 const jsonPath = '/data/articles/index.json';
 const listPath = '/articles/list';
+
+//No DOMContentLoaded event listener because this script should ALWAYS be deferred
+//<script src="some-src" type="module" defer></script>
 
 export async function loadArticle(title, id) {
     document.title = title;
     const articleRender = document.getElementById('current-article');
 
-    fetch(`${listPath}/${id}`).then((res) => {
-       return res.text();
-    }).then((md) => {
-        articleRender.innerHTML = marked.parse(md);
+    const res = await fetch(`${listPath}/${id}`);
+    const text = await res.text();
+    articleRender.innerHTML = marked.parse(text);
+
+    const images = articleRender.querySelectorAll('img');
+    images.forEach(img => {
+        img.style.cursor = "zoom-in"; // Optional: gives a visual cue
+
+        img.addEventListener("click", () => {
+            if (img.requestFullscreen) {
+                img.requestFullscreen();
+            }
+        });
     });
 
-    document.getElementById('article-list').style.animationPlayState = 'running';
-    document.getElementById('article-container').style.animationPlayState = 'running';
+    const allArticles = document.querySelectorAll('.article-preview');
+    allArticles.forEach(article => {
+        article.style.border = "0.1rem solid lightgray";
+        article.style.backgroundColor = "#1a1a1a";
+    });
+
+    const selectedArticle = document.querySelector(`[data-website-id="${id}"]`)
+    selectedArticle.style.border = "0.1rem solid #29bc25";
+    selectedArticle.style.backgroundColor = "#1f1f1f";
+
+    const adContainer = document.createElement('div');
+    adContainer.className = 'ad-container';
+    articleRender.appendChild(adContainer);
+
+    await loadAds();
+    // TODO: Fetch ads once at webpage load and insert them with image, instead of redundant querySelectorAll() call
+
+    const articleContainer = document.getElementById('article-container');
+    const currentArticle = document.getElementById('current-article');
+
+    articleContainer.style.visibility = 'visible';
+    currentArticle.style.visibility = 'visible';
+
+    // Wait for DOM update/render
+    requestAnimationFrame(() => {
+        //Do it twice because of the initial update, then the marked update
+        requestAnimationFrame(() => {
+            currentArticle.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+            });
+        });
+    });
+
 }
 
 export async function showArticles() {
     const main = document.getElementById("article-list");
 
-    fetch(jsonPath).then((res) => {
-        return res.json();
-    }).then((list) => {
-        for (let item of list) {
-            const container = document.createElement("div");
-            container.id = 'article-preview';
-            container.className = 'article-preview';
+    const res = await fetch(jsonPath);
+    const list = await res.json();
 
-            const preview = document.createElement("h3");
-            preview.textContent = item.title;
+    /*
+    * Edward,
+    * Although I don't return the await promises, this works because of javascript implicity wrapping the promise in a return no matter what
+    * I don't know how to fix this, nor do I want to because it works reliably.
+    * You may ask why this race condition is no longer a race condition even if the for loop runs after all the other promises are resolved
+    * This is because js doesn't return a resolved promise until after the loop runs (according to chipeetie)
+    */
 
-            const clickable = document.createElement("a");
-            clickable.href = `?id=${encodeURIComponent(item.id)}&title=${encodeURIComponent(item.title)}`;
-            clickable.className = "article-link";
+    for (let item of list) {
+        const container = document.createElement("div");
+        container.dataset.websiteId = item.id;
+        container.className = 'article-preview';
 
-            clickable.onclick = (e) => {
-                e.preventDefault();
-                history.pushState({}, "", clickable.href);
-                loadArticle(item.title, item.id);
-            }
+        const title = document.createElement("h2");
+        title.textContent = item.title;
 
-            container.append(preview);
-            container.append(clickable);
-            main.appendChild(container);
+        const publishDate = document.createElement("small");
+        publishDate.textContent = `Published on: ${item.timestamp}`;
+
+        const summary = document.createElement("p");
+        summary.textContent = item.summary;
+
+        const clickable = document.createElement("a");
+        clickable.href = `?id=${encodeURIComponent(item.id)}&title=${encodeURIComponent(item.title)}`;
+        clickable.className = "article-link";
+
+        clickable.onclick = (e) => {
+            e.preventDefault();
+            history.pushState({}, "", clickable.href);
+            loadArticle(item.title, item.id);
         }
-    });
+
+        container.append(title, publishDate, summary, clickable);
+        main.appendChild(container);
+    }
 }
+
 
 export function getQueryParams() {
     const params = new URLSearchParams(window.location.search);
@@ -57,9 +115,16 @@ export function getQueryParams() {
     }
 }
 
-showArticles();
+await showArticles().then(() => {
+    const { id, title } = getQueryParams();
+    if (id && title) {
+        loadArticle(title, id);
+    }
+});
 
-const { id, title } = getQueryParams();
-if (id && title) {
-    loadArticle(title, id);
-}
+document.getElementById('scroll-to-top-btn').addEventListener('click', (e) => {
+    document.querySelector('html').scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+    });
+});

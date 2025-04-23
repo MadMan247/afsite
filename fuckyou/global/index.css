@@ -37,7 +37,7 @@ body {
     min-width: 50%;
     margin: 0 auto;
     padding: 1rem;
-    /*TODO: check if padding is good*/
+
 }
 
 header {
@@ -80,7 +80,7 @@ nav {
     color: var(--text);
     text-decoration: none;
     text-shadow: .1rem .1rem .2rem black;
-    border-radius: .4rem;
+    border-radius: 0.4rem 0.4rem 0 0; /* HERE */
     z-index: 5;
 }
 
@@ -92,7 +92,9 @@ nav {
 }
 
 .dropdown {
-    display: none;
+    display: block;
+    visibility: hidden;
+    opacity: 0;
     position: absolute;
     top: 100%;
     left: 0;
@@ -102,6 +104,8 @@ nav {
     margin: 0;
     width: 100%;
     z-index: 5;
+    transition: 200ms ease;
+    border-radius: 0.4rem; /* HERE */
 }
 
 .dropdown li a {
@@ -109,10 +113,12 @@ nav {
     padding: .75rem;
     box-shadow: none;
     border-radius: 0;
+    border-radius: 0.4rem;
 }
 
 .nav > li:hover .dropdown {
-    display: block;
+    visibility: visible;
+    opacity: 1;
 }
 
 main {
@@ -194,4 +200,15 @@ footer ul li a {
     height: calc(100% - .4rem);
     width: calc(100% - 1.65rem);
     overflow: hidden;
+}
+
+.ad-container {
+
+    height: auto; /* Adjust to your desired height */
+    border-radius: 10px; /* Add curved edges */
+    display: grid;
+    place-items: center;
+    padding: 5px; /* Add padding around the ad content */
+    margin: 5px; /* Add margins to create space between ads */
+
 }

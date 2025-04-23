@@ -152,16 +152,7 @@ header {
     color: #777;
     }
 /* Style for the ad container */
-.ad-container {
 
-    height: auto; /* Adjust to your desired height */
-    border-radius: 10px; /* Add curved edges */
-    display: grid;
-    place-items: center;
-    padding: 5px; /* Add padding around the ad content */
-    margin: 5px; /* Add margins to create space between ads */
-
-}
 .youtube-video {
     aspect-ratio: 16 / 9;
     width: 100%;

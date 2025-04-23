@@ -1,33 +1,40 @@
 /*TODO: merge with ../../global/index.css?*/
 main {
     width: 100%;
+
 }
 
 .article-list {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 
-    height: 100dvh;
+    height: fit-content; /* initial */
 
     justify-content: center;
     align-items: center;
-    border-bottom: 0.1rem solid grey;
-    padding-bottom: 0.25rem;
+    padding: 0.5rem;
+    gap: 1rem;
 
-    animation: move-out-the-way 500ms ease forwards;
-    animation-play-state: paused;
+    /*animation: move-out-the-way 500ms ease forwards;*/
+    /*animation-play-state: paused;*/
+
 }
 
 .article-preview {
     position: relative;
     display: flex;
     flex-direction: column;
+    width: 100%;
 
     justify-content: center;
     align-items: center;
 
-    border: 0.1rem solid black;
+    border: 0.1rem solid white;
+    border-radius: 0.4rem;
     padding: 0.5rem;
+
+    background-color: #1a1a1a;
 }
 
 .article-preview a {
@@ -49,29 +56,58 @@ main {
     display: flex;
 
     width: 100%;
-    height: 0;
+    height: fit-content;
 
     justify-content: center;
-    align-items: center;
 
-    margin-top: 0.5rem;
-
-    animation: move-in-the-way 500ms ease forwards;
-    animation-play-state: paused;
+    margin-top: 2rem;
+    visibility: hidden; /* initial */
 }
 
 .current-article {
     border: 0.1rem solid grey;
+    max-width: 85%;
+    padding: 5%;
+    visibility: hidden; /* initial */
+    border-radius: 0.4rem;
+    text-align: left;
+
+    height: fit-content;
+}
+.youtube-video {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+}
+img {
     max-width: 75%;
-    padding: 10%;
+    max-height: 70vh;
+    border-radius: 20px;
+
+    margin: auto;
+    display:block;
+}
+blockquote {
+    font-size: 0.8rem;
+    color: #777;
+    text-align: center;
+}
+
+img:fullscreen {
+    object-fit: contain;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    margin: 0;
+    padding: 0;
+    display: block;
 }
 
 @keyframes move-out-the-way {
     from {
-        height: 100dvh;
+        height: 90dvh;
     }
     to {
-        height: 10dvh;
+        height: 15dvh;
     }
 }
 
