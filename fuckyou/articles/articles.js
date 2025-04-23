@@ -25,7 +25,7 @@ export async function loadArticle(title, id) {
             }
         });
     });
-
+    // TODO: Make work on archaic browsers. OOGA BOOGA CAVEMAN "OOh, I'll use IE6 on my rockputer"
     const allArticles = document.querySelectorAll('.article-preview');
     allArticles.forEach(article => {
         article.style.border = "0.1rem solid lightgray";
