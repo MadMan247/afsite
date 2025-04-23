@@ -70,44 +70,82 @@
 //     console.log(JSON.stringify(json));
 // }
 
-const adJsonPath = '/data/adlink/adlinks.json';
+const adJsonPath = '/data/highlights/adlinks.json';
 const imgPath = '/data/images/highlights';
 
-export async function loadAds() {
-    await fetch(adJsonPath).then(res => res.json())
+let adData;
+
+export async function getData() {
+    if (adData) {
+        return;
+    }
+
+    fetch(adJsonPath)
+        .then(res => res.json())
         .then(json => {
+           return adData = json;
+        })
+        .catch(err => console.log(err));
+}
 
-            const adContainers = document.querySelectorAll(".ad-container");
-            adContainers.forEach(container => {
-                const randInt = Math.floor(Math.random() * json.length);
+export function pickAdLink() {
+    const randInt = Math.floor(Math.random() * adData.length);
 
-                let randomAd = json.splice(randInt, 1);
-                randomAd = randomAd[0];
+    return adData[randInt];
+}
 
-                container.innerHTML = ""; //prep with nothing
+export async function loadAds() {
 
-                //create and add properties to anchor and image
-                const adLink = document.createElement("a");
-                adLink.href = randomAd.adLink;
-                adLink.title = randomAd.adTitle;
+    getData().then((res) => {
+        res = null
+        //Not sure if I need this but I'm too lazy to verify PALE MOON
 
-                const adImage = document.createElement("img");
+        const adContainers = document.querySelectorAll(".ad-container");
+        for (let adContainer of adContainers) {
+            const adObj = pickAdLink();
 
-                adImage.src = `${imgPath}/${randomAd.adFile}`;
-                adImage.alt = randomAd.adTitle;
+            adContainer.innerHTML = ""; // clear
 
-                //append those bitches
-                adLink.appendChild(adImage);
-                container.appendChild(adLink);
+            const adLink = document.createElement("a");
+            adLink.href = adObj.adLink;
+            adLink.title = adObj.adTitle;
 
-            });
+            const adImg = document.createElement("img");
+            adImg.src = `${imgPath}/${adObj.adFile}`;
+            adImg.alt = adObj.adTitle;
 
-
-        }).catch(err => console.log(err));
+            adLink.appendChild(adImg);
+            adContainer.appendChild(adLink);
+        }
+    });
 
 }
 
+export async function loadAdsInElement(element) {
+    getData().then((res) => {
+        res = null;
+
+        const adContainers = element.querySelectorAll('.ad-container');
+        for (let adContainer of adContainers) {
+            const adObj = pickAdLink();
+
+            adContainer.innerHTML = ""; // clear
+
+            const adLink = document.createElement("a");
+            adLink.href = adObj.adLink;
+            adLink.title = adObj.adTitle;
+
+            const adImg = document.createElement("img");
+            adImg.src = `${imgPath}/${adObj.adFile}`;
+            adImg.alt = adObj.adTitle;
+
+            adLink.appendChild(adImg);
+            adContainer.appendChild(adLink);
+        }
+    });
+}
 
 
-// loadAdLinks();
-loadAds();
+getData().then(() => {
+    loadAds();
+});

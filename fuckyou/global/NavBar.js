@@ -1,3 +1,4 @@
+import { SiteLinks } from '/global/index.js';
 
 function pathString() {
     const url = new URL(window.location.href);

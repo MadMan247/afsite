@@ -1,5 +1,5 @@
 import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
-import { loadAds } from "/global/adlink.js";
+import { loadAdsInElement } from "/global/adlink.js";
 
 const jsonPath = '/data/articles/index.json';
 const listPath = '/articles/list';
@@ -40,8 +40,7 @@ export async function loadArticle(title, id) {
     adContainer.className = 'ad-container';
     articleRender.appendChild(adContainer);
 
-    await loadAds();
-    // TODO: Fetch ads once at webpage load and insert them with image, instead of redundant querySelectorAll() call
+    loadAdsInElement(articleRender);
 
     const articleContainer = document.getElementById('article-container');
     const currentArticle = document.getElementById('current-article');
