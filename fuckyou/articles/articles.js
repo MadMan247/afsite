@@ -148,6 +148,10 @@ export function getQueryParams() {
 }
 
 await showArticles().then(() => {
+    const legacyScript = document.getElementById('legacy-script');
+    if (legacyScript) {
+        legacyScript.remove();
+    }
     const { id, title } = getQueryParams();
     if (id && title) {
         loadArticle(title, id);
