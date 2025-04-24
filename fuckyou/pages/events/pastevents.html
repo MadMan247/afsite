@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head>
+  <script type="text/javascript" defer>
+    function getCurrentYear() {
+      return new Date().getFullYear();
+    }
+  </script>
+  <meta charset="UTF-8">
+  <title>Acid Fog Past Events</title>
+  <meta
+  http-equiv="Content-Type"
+  content="text/html; charset=utf-8"
+>
+  <meta name="description" content="Acid Fog events that you can never go to again">
+  <meta name="author" content="Acid Fog">
+  <meta name="keywords" content="Music, records, albums, acid, fog, acidfog, acid fog">
+  <script defer src="https://analytics.edsmcserv.com/script.js" data-website-id="e331402a-10ae-4030-b5d0-14d2eae72744"></script>
+  <link rel="apple-touch-icon" sizes="180x180" href="/fuckyou/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/fuckyou/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/fuckyou/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/fuckyou/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#00a300">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <source
+  src="events.json"
+>
+  <link rel="icon" type="image/x-icon" href="icon.png">
+  <link rel="stylesheet" href="cstyles.css">
+</head>
+<body>
+  <header>
+    <h1>Past Events</h1>
+  </header>
+  <div class="buttons">
+    <a href="/index.html" class="button">Index</a>
+    <a href="./events.html" class="button">Upcoming Events</a>
+  </div>
+  <main>
+    <div class="container">
+      <div class="events-container" id="events-container">
+        <!-- Event items will be dynamically added here -->
+      </div>
+      <div class="ad-container">
+        <!-- Advertisements will be placed here -->
+      </div>
+    </div>
+    <br>
+  </main>
+  <!-- Footer section -->
+  <footer>
+    <p>&copy; <span id="est"></span> Acid Fog. All rights reserved.</p>
+  </footer>
+  <a href="#" class="to-top-icon">↑</a>
+  <script src="pastevents.js"></script>
+  <script src="/articles/adlink.js" defer></script>
+  <script type="text/javascript">
+    document.getElementById('est').textContent = getCurrentYear();
+  </script>
+</body>
