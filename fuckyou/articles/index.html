@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script defer src="https://analytics.edsmcserv.com/script.js" data-website-id="e331402a-10ae-4030-b5d0-14d2eae72744"></script>
     <link rel="apple-touch-icon" sizes="180x180" href="/fuckyou/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/fuckyou/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/fuckyou/favicon-16x16.png">
@@ -12,49 +11,60 @@
     <link rel="stylesheet" type="text/css" href="/global/index.css">
 
     <link rel="mask-icon" href="/fuckyou/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#00a300">It'll Buffff 3
+    <meta name="msapplication-TileColor" content="#00a300">
     <meta name="theme-color" content="#ffffff">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acid Fog Articles</title>
     <script type="module" src="/global/adlink.js"></script>
     <script defer src="/prefetch.js"></script>
+    <script defer src="https://analytics.edsmcserv.com/script.js" data-website-id="e331402a-10ae-4030-b5d0-14d2eae72744"></script>
 
     <script>
-        /*being so for real, this entire section is stupid.*/
-        /*I think it would be much much much smarter to assume legacy, but run the modern first.*/
-        /*If modern runs, do not run legacy. GG EZ PZ*/
-        //TODO: change this to be less ridiculous without letting darky know <3
+        // Fuck Pale Moon Sea Monkeys for doing this bs
         (function() {
-            'use strict';
 
             /**
              * Creates a <script> tag and appends it to the <head>.
              * @param {string} src The URL of the script to load.
-             */
+             **/
             function loadScript(src) {
                 console.log('Injecting script:', src);
                 var script = document.createElement('script');
                 script.src = src;
                 script.defer = true; // Or async=true, or remove both as needed
-                script.type = "module"; //<- needed to prevent an error
+                script.type = "module"; // <- needed to prevent an error <- that's because it's a mod script - Daryk
                 document.head.appendChild(script);
             }
 
-            function isModernBrowser() {
-                try {
-                    new Function('async function test() {}')(); // test for async function support
-                    return true;
-                } catch (e) {
-                    return false;
+            function isModernBrowser(userAgent) {
+                // Convert user agent to lower case for consistency
+                userAgent = userAgent.toLowerCase();
+                console.log(userAgent);
+
+                // Chrome detection
+                const chromeMatch = userAgent.match(/chrome\/(\d+)/);
+                if (chromeMatch !=null) {
+                    const chromeVersion = parseInt(chromeMatch[1]);
+                    if (chromeVersion >= 125) return true;
                 }
+
+                // Firefox detection
+                const firefoxMatch = userAgent.match(/firefox\/(\d+)/);
+                if (firefoxMatch != null) {
+                    const firefoxVersion = parseInt(firefoxMatch[1], 10);
+                    if (firefoxVersion >= 125) return true;
+                }
+
+                return false;
             }
 
 
-            loadScript('/articles/articles.js');
-
-            loadScript('/articles/articles-legacy.js');
-
+            if (isModernBrowser(navigator.userAgent)) {
+                loadScript('/articles/articles.js');
+            } else {
+                loadScript('/articles/articles-legacy.js');
+            }
 
         })();
     </script>
@@ -99,15 +109,12 @@
     </button>
 
     <div id="article-list" class="article-list">
-        <!-- Should get dumped here :) -->
+        <!-- Should get dumped here :) Do you know what that means Edward? That means the js will dump the articles into this article list container. Do you want them to be different? Do you want them to be separated? Go ahead and explain, Edward, it's pretty easy to write additional parsing for the javascript, but hey, what do I know? I apparently can't even say the literal word "nothing" :)))))))))) -->
     </div>
 
     <hr/>
 
-    <div class="article-container" id="article-container">
-
-        <div id="current-article" class="current-article">
-        </div>
+    <div class="ad-container">
 
     </div>
 </main>

@@ -3,7 +3,7 @@ import { SiteLinks } from '/global/index.js';
 function pathString() {
     const url = new URL(window.location.href);
     const pathSegments = url.pathname.split('/').filter(Boolean); // Removes empty segments
-    const initialHome = 'http://localhost:3000';
+    const initialHome = '/';
     let s = '<ul class="dropdown">';
     let runningPath = '/';
 

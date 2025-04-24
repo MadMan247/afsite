@@ -9,55 +9,76 @@ const listPath = '/articles/list';
 
 export async function loadArticle(title, id) {
     document.title = title;
-    const articleRender = document.getElementById('current-article');
 
-    const res = await fetch(`${listPath}/${id}`);
-    const text = await res.text();
-    articleRender.innerHTML = marked.parse(text);
+    const current = document.querySelector(`[data-website-id="${id}-article"]`);
 
-    const images = articleRender.querySelectorAll('img');
-    images.forEach(img => {
-        img.style.cursor = "zoom-in"; // Optional: gives a visual cue
+    if (!current) {
+        const articleContainer = document.createElement('div');
+        articleContainer.id = 'article-container';
+        articleContainer.className = 'article-container';
+        articleContainer.dataset.websiteId = `${id}-article`;
 
-        img.addEventListener("click", () => {
-            if (img.requestFullscreen) {
-                img.requestFullscreen();
-            }
+        const articleRender = document.createElement('div');
+        articleRender.id = 'current-article';
+        articleRender.className = 'current-article';
+
+        const res = await fetch(`${listPath}/${id}`);
+        const text = await res.text();
+        articleRender.innerHTML = marked.parse(text);
+
+        const images = articleRender.querySelectorAll('img');
+        images.forEach(img => {
+            img.style.cursor = "zoom-in"; // Optional: gives a visual cue
+
+            img.addEventListener("click", () => {
+                if (img.requestFullscreen) {
+                    img.requestFullscreen();
+                }
+            });
         });
-    });
-    // TODO: Make work on archaic browsers. OOGA BOOGA CAVEMAN "OOh, I'll use IE6 on my rockputer"
-    const allArticles = document.querySelectorAll('.article-preview');
-    allArticles.forEach(article => {
-        article.style.border = "0.1rem solid lightgray";
-        article.style.backgroundColor = "#1a1a1a";
-    });
+        // TODO: Make work on archaic browsers. OOGA BOOGA CAVEMAN "OOh, I'll use IE6 on my rockputer"
+        const allArticles = document.querySelectorAll('.article-preview');
+        allArticles.forEach(article => {
+            article.style.border = "0.1rem solid lightgray";
+            article.style.backgroundColor = "#1a1a1a";
+        });
 
-    const selectedArticle = document.querySelector(`[data-website-id="${id}"]`)
-    selectedArticle.style.border = "0.1rem solid #29bc25";
-    selectedArticle.style.backgroundColor = "#1f1f1f";
+        const selectedArticle = document.querySelector(`[data-website-id="${id}"]`)
+        selectedArticle.style.border = "0.1rem solid #29bc25";
+        selectedArticle.style.backgroundColor = "#1f1f1f";
 
-    const adContainer = document.createElement('div');
-    adContainer.className = 'ad-container';
-    articleRender.appendChild(adContainer);
+        const adContainer = document.createElement('div');
+        adContainer.className = 'ad-container';
+        articleRender.appendChild(adContainer);
 
-    loadAdsInElement(articleRender);
+        loadAdsInElement(articleRender);
 
-    const articleContainer = document.getElementById('article-container');
-    const currentArticle = document.getElementById('current-article');
+        articleContainer.appendChild(articleRender);
+        selectedArticle.after(articleContainer);
 
-    articleContainer.style.visibility = 'visible';
-    currentArticle.style.visibility = 'visible';
-
-    // Wait for DOM update/render
-    requestAnimationFrame(() => {
-        //Do it twice because of the initial update, then the marked update
+        // Wait for DOM update/render
         requestAnimationFrame(() => {
-            currentArticle.scrollIntoView({
+            //Do it twice because of the initial update, then the marked update
+            requestAnimationFrame(() => {
+                articleRender.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start',
+                });
+            });
+        });
+    } else {
+        if (!current.classList.contains('inactive')) {
+            current.classList.add('inactive');
+            current.firstElementChild.classList.add('inactive');
+        } else {
+            current.classList.remove('inactive');
+            current.firstElementChild.classList.remove('inactive');
+            current.scrollIntoView({
                 behavior: 'smooth',
                 block: 'start',
             });
-        });
-    });
+        }
+    }
 
 }
 
@@ -76,31 +97,43 @@ export async function showArticles() {
     */
 
     for (let item of list) {
-        const container = document.createElement("div");
-        container.dataset.websiteId = item.id;
-        container.className = 'article-preview';
+        const category = document.createElement("div");
+        category.className = 'category';
 
-        const title = document.createElement("h2");
-        title.textContent = item.title;
+        const categoryName = document.createElement("h1");
+        categoryName.textContent = item.name;
 
-        const publishDate = document.createElement("small");
-        publishDate.textContent = `Published on: ${item.timestamp}`;
+        category.appendChild(categoryName);
 
-        const summary = document.createElement("p");
-        summary.textContent = item.summary;
+        for (let article of item.articles) {
+            const container = document.createElement("div");
+            container.dataset.websiteId = article.id;
+            container.className = 'article-preview';
 
-        const clickable = document.createElement("a");
-        clickable.href = `?id=${encodeURIComponent(item.id)}&title=${encodeURIComponent(item.title)}`;
-        clickable.className = "article-link";
+            const title = document.createElement("h2");
+            title.textContent = article.title;
 
-        clickable.onclick = (e) => {
-            e.preventDefault();
-            history.pushState({}, "", clickable.href);
-            loadArticle(item.title, item.id);
+            const publishDate = document.createElement("small");
+            publishDate.textContent = `Published on: ${article.timestamp}`;
+
+            const summary = document.createElement("p");
+            summary.textContent = article.summary;
+
+            const clickable = document.createElement("a");
+            clickable.href = `?id=${encodeURIComponent(article.id)}&title=${encodeURIComponent(article.title)}`;
+            clickable.className = "article-link";
+
+            clickable.onclick = (e) => {
+                e.preventDefault();
+                history.pushState({}, "", clickable.href);
+                loadArticle(article.title, article.id);
+            }
+
+            container.append(title, publishDate, summary, clickable);
+            category.appendChild(container);
         }
 
-        container.append(title, publishDate, summary, clickable);
-        main.appendChild(container);
+        main.appendChild(category);
     }
 }
 

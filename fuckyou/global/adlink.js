@@ -80,7 +80,7 @@ export async function getData() {
         return;
     }
 
-    fetch(adJsonPath)
+    return fetch(adJsonPath)
         .then(res => res.json())
         .then(json => {
            return adData = json;
