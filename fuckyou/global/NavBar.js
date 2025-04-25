@@ -5,7 +5,6 @@ function pathString() {
     const pathSegments = url.pathname.split('/').filter(Boolean); // Removes empty segments
     let s = '<ul class="dropdown">';
     let runningPath = '/';
-
     pathSegments.forEach((segment, index) => {
         runningPath += `${segment}/`;
         s += `<li><a href="${runningPath}">${decodeURIComponent(segment)}</a></li>`;

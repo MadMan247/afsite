@@ -26,6 +26,7 @@ main {
 .category {
     display: flex;
     flex-direction: column;
+    width: 100%;
 
     align-items: center;
     gap: 0.5rem;
@@ -81,7 +82,7 @@ main {
 
 .current-article {
     border: 0.1rem solid grey;
-    max-width: 85%;
+    max-width: 75%;
     padding: 5%;
     visibility: visible;
     border-radius: 0.4rem;

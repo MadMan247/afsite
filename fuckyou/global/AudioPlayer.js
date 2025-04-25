@@ -1,8 +1,18 @@
 const songSrc = '/pages/sotm/song.mp3';
 const container = document.getElementById('audio-container');
 
-const seekbarWidth = 2;
-const targetBars = 192;
+const seekbarWidth = 4;
+const targetBars = 100;
+const scale = 0.4;
+const HFCO = 1.3;
+
+function getCanvasWidth() {
+    if (window.innerWidth > 768) {
+        return Math.floor(window.innerWidth * scale);
+    } else {
+        return Math.floor(window.innerWidth * (scale*2));
+    }
+}
 
 function createWaveformPlayer(container, songSrc) {
     let hoverX = null;
@@ -11,7 +21,7 @@ function createWaveformPlayer(container, songSrc) {
     player.className = "player";
 
     const canvas = document.createElement("canvas");
-    canvas.width = 600;
+    canvas.width = getCanvasWidth();
     canvas.height = 100;
     canvas.style.background = "#1e1e1e";
     canvas.style.border = "1px solid #333";
@@ -51,7 +61,7 @@ function createWaveformPlayer(container, songSrc) {
     const audioCtx = new window.AudioContext();
     const source = audioCtx.createMediaElementSource(audio);
     const analyser = audioCtx.createAnalyser();
-    analyser.fftSize = 256;
+    analyser.fftSize = 256; //power of 2
     analyser.smoothingTimeConstant = 0.85;
 
     source.connect(analyser);
@@ -78,7 +88,7 @@ function createWaveformPlayer(container, songSrc) {
     canvas.addEventListener("click", (e) => {
         const rect = canvas.getBoundingClientRect();
         const x = e.clientX - rect.left;
-        const percent = x / canvas.width;
+        const percent = x / (canvas.width * HFCO);
         audio.currentTime = percent * audio.duration;
     });
 
@@ -93,10 +103,11 @@ function createWaveformPlayer(container, songSrc) {
 
     function draw() {
         requestAnimationFrame(draw);
+        //is the below line what sets the max frequency value?
         analyser.getByteFrequencyData(dataArray);
 
         const progress = audio.currentTime / audio.duration || 0;
-        const canvasWidth = canvas.width;
+        const canvasWidth = canvas.width * HFCO;
         const canvasHeight = canvas.height;
         const playedWidth = canvasWidth * progress;
 
@@ -115,12 +126,12 @@ function createWaveformPlayer(container, songSrc) {
         let barHeight;
 
         for (let i = 0; i < smoothed.length; i++) {
-            barHeight = (smoothed[i] / 255) * canvasHeight;
+            barHeight = (smoothed[i] / 720)  * canvasHeight * Math.log(i + 2);
             const x = i * barWidth;
             const y = canvasHeight - barHeight;
 
-            const boostFactor = Math.pow(i / smoothed.length, 2);
-            barHeight *= 1 + boostFactor * 1.2;
+            // const boostFactor = Math.pow(i / smoothed.length, 2);
+            // barHeight *= 1 + boostFactor * 1.2;
 
             ctx.fillStyle = "#4fc3f7";
             ctx.fillRect(x, y, barWidth - 1, barHeight);

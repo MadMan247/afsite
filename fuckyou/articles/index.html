@@ -44,14 +44,14 @@
                 const chromeMatch = userAgent.match(/chrome\/(\d+)/);
                 if (chromeMatch !=null) {
                     const chromeVersion = parseInt(chromeMatch[1]);
-                    if (chromeVersion >= 125) return true;
+                    if (chromeVersion >= 130) return true;
                 }
 
                 // Firefox detection
                 const firefoxMatch = userAgent.match(/firefox\/(\d+)/);
                 if (firefoxMatch != null) {
                     const firefoxVersion = parseInt(firefoxMatch[1], 10);
-                    if (firefoxVersion >= 125) return true;
+                    if (firefoxVersion >= 130) return true;
                 }
 
                 return false;
