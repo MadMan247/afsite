@@ -81,6 +81,7 @@ nav {
     text-decoration: none;
     text-shadow: .1rem .1rem .2rem black;
     border-radius: 0.4rem 0.4rem 0 0; /* HERE */
+    text-align: center;
     z-index: 5;
 }
 
