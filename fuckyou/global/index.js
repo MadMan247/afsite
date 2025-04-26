@@ -1,7 +1,7 @@
 // Add all global utils here, silly goose
 
 export const SiteLinks = {
-    events: '/pages/events/events.html',
+    events: '/pages/events',
     cast: '/pages/AFCast',
     trivia: '/pages/trivia/trivia.html',
     sotm: '/pages/sotm',
