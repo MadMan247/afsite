@@ -30,7 +30,7 @@
     <header>
         <a href="https://acidfog.com"><img src="./data/images/branding/banner.jpg" alt="Acid Fog Banner" class="banner"></a>
         <nav>
-            <script type="module" src="./global/NavBar.js"></script>
+            <script defer type="module" src="./global/NavBar.js"></script>
         </nav>
     </header>
     <main>
@@ -57,25 +57,9 @@
             <p>Acid Fog's journey has just begun. Consider supporting the band in any way that you can. Everything you can do is appreciated. From their beginnings as &quot;Gloom&quot;, to present, this is just the beginning of the new age of doom.</p>
         </section>
     </main>
-    <footer>
-        <ul>
-            <li><a
-                    href="mailto:gloomofficial87@gmail.com"
-                    title="Please contact us here for gigs"
-            >Contact Us!</a></li>
-            <li><a href="about.html" title="Who did this?! 🤣🤣🤣">About This Site</a></li>
-            <li><a href="#" title="To make some fuckin doom metal, what do you think?">Our Mission</a></li>
-            <li><a href="./pages/AFCast/" title="There's some zany people here">The Cast</a></li>
-            <li><a
-                    href="#"
-                    title="Yes, this is ours, and not yours."
-            >All Rights Reserved ©<span id="est"></span></a></li>
-            <li><a href="./sitemap_4432965.html" title="Who the actual fuck uses sitemaps anymore? Seriously. I'm putting this here half as a fucking joke. I mean, why not just navigate? It's really not that complicated. And this site map only includes uninteresting shit that's on this subdomain. Nothing from anything interesting, like the peer.acidfog.com site.">Sitemap?</a></li>
-        </ul>
+    <footer id="footer">
+        <script defer src="/global/Footer.js" type="module"></script>
     </footer>
 </div>
 </body>
-<script type="text/javascript" defer>
-    document.getElementById('est').textContent = String(new Date().getFullYear());
-</script>
 </html>

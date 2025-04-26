@@ -7,11 +7,18 @@ const scale = 0.4;
 const HFCO = 1.3;
 
 function getCanvasWidth() {
-    if (window.innerWidth > 768) {
-        return Math.floor(window.innerWidth * scale);
-    } else {
+    if (window.innerWidth > 1920) {
+        return window.innerWidth * scale;
+    } else if (window.innerWidth < 1000) {
         return Math.floor(window.innerWidth * (scale*2));
+    } else {
+        return 855;
     }
+    // if (window.innerWidth > 768) {
+    //     return Math.floor(window.innerWidth * scale);
+    // } else {
+    //     return Math.floor(window.innerWidth * (scale*2));
+    // }
 }
 
 function createWaveformPlayer(container, songSrc) {
@@ -90,6 +97,8 @@ function createWaveformPlayer(container, songSrc) {
         const x = e.clientX - rect.left;
         const percent = x / (canvas.width * HFCO);
         audio.currentTime = percent * audio.duration;
+        audio.play();
+        playPauseBtn.textContent = "⏸️";
     });
 
     canvas.addEventListener("mousemove", (e) => {

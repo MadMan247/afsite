@@ -10,7 +10,7 @@ export const SiteLinks = {
 
     contactUs: '/pages/contact-us',
 
-    funkwhale: 'https://music.acidfog.com',
+    funkwhale: 'https://music.acidfog.com/channels/acid_fog',
     spotify: 'https://open.spotify.com/artist/3JXrxOSYCRqrwIBF5KFNqO',
     amazon: 'https://music.amazon.com/artists/B0BZ73TD6K/acid-fog',
     ytMusic: 'https://www.youtube.com/channel/UCEBjp8Ghj1HVw5sI9mZ73fg',
