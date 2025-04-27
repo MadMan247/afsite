@@ -1,0 +1,116 @@
+/* BASE STYLES */
+:root {
+  --clr-dark: #5c0806;
+  --clr-light: #f1f5f9;
+  --clr-accent: #065c0e;
+  --clr-mid: #696969;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  word-spacing: 1.4px;
+  font-family: "Roboto", sans-serif;
+  color: var(--clr-dark);
+  background-color: var(--clr-mid);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.container {
+  min-width: 60%;
+  width: 1000px;
+  min-height: 100vh;
+  
+  margin: 0 auto;
+  border: 4px solid var(--clr-dark);
+  border-radius: 10px;
+  background-image: url("irsbg.jpg");
+  background-color: var(--clr-light);
+  background-repeat: repeat;
+  background-size: contain;
+  align-items: flex-start;
+}
+
+.item {
+  width: 100%;
+  min-height: 350px;
+  
+  padding: 2em;
+  font-weight: 700;
+  color: var(--clr-light);
+  text-align: center;
+  border: 0px solid var(--clr-accent);
+  border-radius: 10px;
+}
+.item a {
+    text-decoration: none;
+}
+.subitemabout {
+  width: 150px;
+  height: 100%;
+  
+  padding: 1em;
+  font-weight: 700;
+  color: var(--clr-dark);
+  text-align: center;
+  border: 4px solid var(--clr-accent);
+  border-radius: 10px;
+  flex-grow: 1;
+  flex-direction: columns;
+}
+.subitemimg {
+  min-width: 350px;
+  min-height: 300px;
+  background-color: #fb7185;
+  
+  font-weight: 700;
+  color: var(--clr-light);
+  text-align: center;
+  border: 0px solid var(--clr-accent);
+  border-radius: 10px;
+  flex-grow: 0;
+}
+.blink {
+    animation: blinker 1.2s linear infinite;
+    color: red;
+    font-size: 2.5em;
+    /* Larger, responsive font size */
+    margin-bottom: 5px;
+}
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* END OF BASE STYLES */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  
+}
+.item {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5em;
+
+}
+.container {
+  display: flex;
+}
+
+

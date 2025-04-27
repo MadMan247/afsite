@@ -1,0 +1,148 @@
+/*TODO: merge with ../../global/index.css?*/
+main {
+    width: 100%;
+
+}
+
+.article-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    height: fit-content; /* initial */
+
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+    gap: 1rem;
+
+    transition: 200ms ease;
+
+    /*animation: move-out-the-way 500ms ease forwards;*/
+    /*animation-play-state: paused;*/
+
+}
+
+.category {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.article-preview {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    justify-content: center;
+    align-items: center;
+
+    border: 0.1rem solid white;
+    border-radius: 0.4rem;
+    padding: 0.5rem;
+
+    background-color: #1a1a1a;
+
+    transition: 200ms ease;
+}
+
+.article-preview a {
+    position: absolute;
+
+    height: 100%;
+    width: 100%;
+
+    background: transparent;
+    border: none;
+    text-decoration: none;
+}
+
+.article-preview h3 {
+    font-size: 1.2rem;
+}
+
+.article-container {
+    display: flex;
+
+    width: 100%;
+    height: fit-content;
+
+    justify-content: center;
+
+    margin-top: -0.25rem;
+    margin-bottom: 1rem;
+    visibility: visible;
+
+    transition: 200ms ease;
+}
+
+.current-article {
+    border: 0.1rem solid grey;
+    max-width: 75%;
+    padding: 5%;
+    visibility: visible;
+    border-radius: 0.4rem;
+    text-align: left;
+
+    height: fit-content;
+
+    transition: 200ms ease;
+}
+
+.inactive {
+    transition: 400ms ease;
+    visibility: hidden;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+.youtube-video {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+}
+img {
+    max-width: 75%;
+    max-height: 70vh;
+    border-radius: 20px;
+
+    margin: auto;
+    display:block;
+}
+blockquote {
+    font-size: 0.8rem;
+    color: #777;
+    text-align: center;
+}
+
+img:fullscreen {
+    object-fit: contain;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+@keyframes move-out-the-way {
+    from {
+        height: 90dvh;
+    }
+    to {
+        height: 15dvh;
+    }
+}
+
+@keyframes move-in-the-way {
+    from {
+        height: 0;
+    }
+    to {
+        height: 90dvh;
+    }
+}

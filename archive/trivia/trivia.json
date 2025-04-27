@@ -1,0 +1,104 @@
+[
+    {
+      "question": "The correct answer is \"Hello\"",
+      "answers": ["Help", "Goodbye", "See Ya", "Hello"],
+      "correctResponse": "Yeah!",
+      "incorrectResponse": "Nah"
+    },
+    {
+      "question": "Ethan and a group of friends went to see the Five Nights at Freddie's movie in theaters. How soon after release did they see it?",
+      "answers": ["First Day", "Within the month", "Within a year", "Within a week"],
+      "correctResponse": "That's right, second day, baby!",
+      "incorrectResponse": "haha, not a true fan. The ticklefight was viewed on the second day."
+    },
+    {
+      "question": "Connor's last name is:",
+      "answers": ["Cappi", "Cappitella", "Capiteli", "Cappitelli"],
+      "correctResponse": "The Italian Stallion's name is indeed spelled that way!",
+      "incorrectResponse": "Nah, try again later."
+    },
+    {
+      "question": "What is the first song that Acid Fog published?",
+      "answers": ["Memory Banks", "The Acid King", "Into The Fog", "Original Jam"],
+      "correctResponse": "A hood classic!",
+      "incorrectResponse": ":("
+    },
+    {
+      "question": "Acid Fog was formed in a secluded garage, where?",
+      "answers": ["Springfield, Illinois", "Bloomington, Illinois", "Chicago, Illinois", "Mechanicsburg, Illinois"],
+      "correctResponse": "That's Right, Acid Fog was formed in a Garage in MechanicsBurg Illinois, there are simply few places to perform there, so they tend to play gigs in the surrounding areas.",
+      "incorrectResponse": "The correct answer to this question would have been Mechanicsburg, Illinois. It is there that the band members congregated, though they play in other places around Illinois."
+    },
+    {
+      "question": "Which Gig was Acid Fog's first official gig?",
+      "answers": ["Dumb Records", "Midwest Trade Expo", "The Depths Backyard", "Skank Skates"],
+      "correctResponse": "Acid Fog (Then temporarily named Gloom)'s first gig was at Skank Skates, February 4th, 2023.",
+      "incorrectResponse": "Consider looking at the Acid Fog Tapes if you want the answer."
+    },
+    {
+      "question": "How many public Acid Fog shows have not been recorded in their entirety, disregarding technical errors?",
+      "answers": ["One", "Two", "Three", "Zero"],
+      "correctResponse": "That's Right, as of 10/29/2023, every single acid fog concert/show/performance that was publically available has been recorded in its entirety.",
+      "incorrectResponse": "Not quite, we're pretty good about recording their shows."
+    },
+    {
+      "question": "Before playing bass in Acid Fog, clint played which instrument?",
+      "answers": ["Banjo", "Drums", "He always played bass", "Guitar"],
+      "correctResponse": "Clint also plays the spoons. He mentioned it in his Activator interview.",
+      "incorrectResponse": "Clint played guitar before being asked to play bass for Acid Fog."
+    },
+    {
+      "question": "Ethan has four cats, which of them is his absolute undeniable favorite?",
+      "answers": ["Milo/bussy", "Spooky", "Tammy", "Ellie"],
+      "correctResponse": "Unfortunately, Ethan adores the goblin cat.",
+      "incorrectResponse": "Nope. Not that one."
+    },
+    {
+      "question": "How many time had Acid Fog played at Dumb Records in 2023?",
+      "answers": ["0", "1", "2", "3"],
+      "correctResponse": "If only it were even more!",
+      "incorrectResponse": "Can I put emojis here? would that work? 🤡 holy shit no way. It actually even shows the emoji in the default linux mint text editor, I really did not expect that."
+    },
+    {
+      "question": "In the Activator Issue 63, featuring Acid Fog, Activator asked \"Who's on your playlist, what have you been listening to a lot recently?\", who answered \"Black Sabbath, Alice in Chains, Led Zepplin, Nirvana, and The Residents\"?",
+      "answers": ["Clarence Van Jaunt", "Ethan", "Clint", "Connor"],
+      "correctResponse": "I'm surprised Connor didn't put Van Halen, personally.",
+      "incorrectResponse": "No."
+    },
+    {
+      "question": "In the Activator Issue 63, featuring Acid Fog, Activator asked \"Who's on your playlist, what have you been listening to a lot recently?\", who answered \"Camel, Acid Mammoth, The Doors, Buckethead, and Frank Zappa\"?",
+      "answers": ["Clarence Van Jaunt", "Ethan", "Connor", "Clint"],
+      "correctResponse": "Clint's listening. Right now. To you. Your breathing. It's ragged. Straighten up.",
+      "incorrectResponse": "No."
+    },
+    {
+      "question": "In the Activator Issue 63, featuring Acid Fog, Activator asked \"Who's on your playlist, what have you been listening to a lot recently?\", who answered \"Pentagram, Mephistofeles, Electric Wizard, Oingo Boingo, and B-52s\"?",
+      "answers": ["Clarence Van Jaunt", "Connor", "Clint", "Ethan"],
+      "correctResponse": "Mr. Wright would also probably say \"Mac DeMarco\" now!",
+      "incorrectResponse": "No."
+    },
+    {
+      "question": "In the Activator Issue 63, featuring Acid Fog, Activator asked Acid Fog questions-- What was the name of the individual accredited for asking questions?",
+      "answers": ["Joseph Copley", "Scott Faingold", "Tom Raymond", "Carol Weems"],
+      "correctResponse": "I could be wrong, but I think that's why they put the name at the top...",
+      "incorrectResponse": "How about you read the issue to find out... oh."
+    },
+    {
+      "question": "Which was released on the Offical Acid Fog YouTube Channel First? (MMDDYYYY)",
+      "answers": ["Buzzbomb 09/02/2023", "George Ranks 06/23/2023", "Dumb Records 10/13/2023", "Centennial Park 09/09/2023"],
+      "correctResponse": "Yes. Perhaps a little out of order :/",
+      "incorrectResponse": "SIKE YOU THOUGHT"
+    },
+    {
+      "question": "What time did the Acid Fog performance at Main Gate Bar and Grill (11/18/2023) start?",
+      "answers": ["8:00 P.M.", "8:00 A.M.", "8:30 P.M.", "7:15 P.M."],
+      "correctResponse": "Despite the flyers CLEARLY stating 8:00 P.M., they started way early. The 8:00 P.M. Flyer was even in the november 2023 issue of Activator.",
+      "incorrectResponse": "Did you know you can view the flyer in our \"past events\" page?"
+    },
+    {
+      "question": "Do you have a question? Please send it to gloomofficial87@gmail.com, and we might add it here.",
+      "answers": [ "ok", "ok", "ok", "ALRIGHT" ],
+      "correctResponse": "HELL YEAH",
+      "incorrectResponse": "please help I am running out of ideas."
+    }
+  ]

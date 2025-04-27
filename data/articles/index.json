@@ -1,0 +1,61 @@
+[
+  {
+    "name": "Event Articles",
+    "articles": [
+      {
+        "title": "Midwest Trade Expo 2023",
+        "id": "midwest-trade-expo-2023.md",
+        "timestamp": "November 2, 2023",
+        "summary": "While skaters shredded at the Centennial Park skatepark, Ethan shredded on his guitar, Connor shredded his drumsticks, and Clint shredded his fingers.",
+        "preview": "/none"
+      },
+      {
+        "title": "Live at the Depths Backyard",
+        "id": "live-at-depths-backyard-2023.md",
+        "timestamp": "November 6, 2023",
+        "summary": "We were prepared for the absolute worst. We didn't think we would make it half way through the set without the police shutting us down...",
+        "preview": "/none"
+      },
+      {
+        "title": "Activator 9",
+        "id": "activator-9.md",
+        "timestamp": "October 25th, 2023",
+        "summary": "Activator Magazine, a local magazine in Springfield, Illinois featured Acid Fog in their September 2023 issue #63",
+        "preview": "/someImage"
+      }
+    ]
+  },
+  {
+    "name": "Release Articles",
+    "articles": [
+      {
+        "title": "Mellow: Out Now!",
+        "id": "mellow-ep.md",
+        "timestamp": "October 25th, 2023",
+        "summary": "Mellow, released on September 20th 2023, is a beautiful and mellow EP full of sweet and soft songs combined with heavier elements...",
+        "preview": "/none"
+      },
+      {
+        "title": "The Hellbent Studios Demos",
+        "id": "hellbent-studios-demos.md",
+        "timestamp": "October 25th, 2023",
+        "summary": "The Hellbent Studio Demos have been released as a Bandcamp exclusive on July 11, 2023. The album has 6 songs, with no title track...",
+        "preview": "/none"
+      },
+      {
+        "title": "Into the Fog: Out Now!",
+        "id": "into-the-fog-album.md",
+        "timestamp": "October 25th, 2023",
+        "summary": "Released on April 20th, 2023, Into the Fog is an album containing seven tracks, the Title Track \"Into The Fog\" is the second track on the album...",
+        "preview": "/none"
+      },
+      {
+        "title": "Original Jam: Out Now!",
+        "id": "original-jam-single.md",
+        "timestamp": "October 25th, 2023",
+        "summary": "Released on April 1st 2023, Original Jam is a single containing two tracks, the Title Track \"Original Jam,\" and \"memory Rot Nostalgia...\"",
+        "preview": "/none"
+      }
+    ]
+  }
+]
