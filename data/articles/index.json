@@ -57,5 +57,17 @@
         "preview": "/none"
       }
     ]
+  },
+  {
+    "name": "Other Articles",
+    "articles": [
+      {
+        "title": "Dumb Records",
+        "id": "dumbrecs.md",
+        "timestamp": "November 1st, 2023",
+        "summary": "&quot;Best record store&quot; -Ethan, Dumb Records Show 7/14/2023",
+        "preview": "/none"
+      }
+    ]
   }
 ]
