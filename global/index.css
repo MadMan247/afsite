@@ -24,6 +24,7 @@ html {
 }
 
 body {
+    background: var(--gradient-med);
     font-family: var(--font-default);
     font-size: var(--font-size);
     margin: 0;
