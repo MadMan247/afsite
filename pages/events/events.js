@@ -39,7 +39,9 @@ function createEvent(event) {
 }
 
 function upcomingDropdown(e) {
-    e.preventDefault();
+    if (e) {
+        e.preventDefault();
+    }
 
     const parent = e.target.parentElement;
     const eventContainer = document.getElementById('upcoming-events');
@@ -118,7 +120,9 @@ function upcomingDropdown(e) {
 }
 
 function pastDropdown(e) {
-    e.preventDefault();
+    if (e) {
+        e.preventDefault();
+    }
 
     const parent = e.target.parentElement;
     const eventContainer = document.getElementById('past-events');
@@ -227,4 +231,10 @@ fetch(eventIndexPath)
 
 document.getElementById('upcoming-btn').addEventListener('click', upcomingDropdown);
 document.getElementById('past-btn').addEventListener('click', pastDropdown);
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        document.getElementById('upcoming-btn').click();
+    }, 500);
+    //This is a bad solution, and I am ashamed.
+});
 
