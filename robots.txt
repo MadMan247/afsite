@@ -1,4 +1,6 @@
 User-agent: *
-Disallow: /
+Disallow: /archive/*
+Disallow: /data/*
+Disallow: /global/*
 Allow: /index.html
 Allow: /articles/
