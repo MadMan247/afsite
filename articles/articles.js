@@ -155,4 +155,6 @@ fetchAllArticles().then(() => {
   if (article) {
     loadArticle(article.title, article.parentId);
   }
+
+  document.getElementById("loader").remove();
 });

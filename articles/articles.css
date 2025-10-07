@@ -1,7 +1,14 @@
 /*TODO: merge with ../../global/index.css?*/
 main {
     width: 100%;
+}
 
+.loader {
+    display: grid;
+    place-items: center;
+    min-height: 70vh;
+    width: 100%;
+    margin-top: 2rem;
 }
 
 .article-list {
@@ -16,11 +23,8 @@ main {
     padding: 0.5rem;
     gap: 1rem;
 
-    transition: 200ms ease;
-
-    /*animation: move-out-the-way 500ms ease forwards;*/
-    /*animation-play-state: paused;*/
-
+    transition: 400ms ease;
+    box-sizing: border-box;
 }
 
 .category {
@@ -41,13 +45,19 @@ main {
     justify-content: center;
     align-items: center;
 
-    border: 0.1rem solid white;
+    border: 0.1rem solid lightgrey;
     border-radius: 0.4rem;
     padding: 0.5rem;
 
     background-color: #1a1a1a;
 
-    transition: 200ms ease;
+    transition: 400ms ease;
+    box-sizing: border-box;
+}
+
+.article-preview.active {
+    border: 0.1rem solid #29bc25;
+    background-color: #1f1f1f;
 }
 
 .article-preview a {
@@ -69,15 +79,27 @@ main {
     display: flex;
 
     width: 100%;
-    height: fit-content;
+    max-height: 0;
 
     justify-content: center;
 
+    visibility: visible;
+
+    transition: 400ms ease;
+    box-sizing: border-box;
+
+    opacity: 0;
+    margin: 0;
+    visibility: hidden;
+    overflow: hidden;
+}
+
+.article-container.active {
+    max-height: 400vh;
+    opacity: 1;
     margin-top: -0.25rem;
     margin-bottom: 1rem;
     visibility: visible;
-
-    transition: 200ms ease;
 }
 
 .current-article {
@@ -90,17 +112,10 @@ main {
 
     height: fit-content;
 
-    transition: 200ms ease;
+    transition: 400ms ease;
+    background-color: #1a1a1a;
 }
 
-.inactive {
-    transition: 400ms ease;
-    visibility: hidden;
-    height: 0;
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
-}
 .youtube-video {
     aspect-ratio: 16 / 9;
     width: 100%;
@@ -111,7 +126,7 @@ img {
     border-radius: 20px;
 
     margin: auto;
-    display:block;
+    display: block;
 }
 blockquote {
     font-size: 0.8rem;

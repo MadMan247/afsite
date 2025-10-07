@@ -68,6 +68,57 @@
                     </svg>
                 </button>
 
+                <div class="loader" id="loader">
+                    <svg
+                        style="height: 12rem; width: 12rem"
+                        width="48"
+                        height="48"
+                        viewBox="0 0 50 50"
+                        xmlns="http://www.w3.org/2000/svg"
+                        role="img"
+                        aria-label="Loading"
+                    >
+                        <title>Loading</title>
+                        <style>
+                            .spinner {
+                                stroke: #065c0e;
+                                stroke-linecap: round;
+                                stroke-width: 4;
+                                fill: none;
+                                stroke-dasharray: 1 150;
+                                stroke-dashoffset: 0;
+                                transform-origin: 25px 25px;
+                                animation:
+                                    dash 1.4s ease-in-out infinite,
+                                    rotate 2s linear infinite;
+                            }
+                            @keyframes rotate {
+                                100% {
+                                    transform: rotate(360deg);
+                                }
+                            }
+                            @keyframes dash {
+                                0% {
+                                    stroke-dasharray: 1 150;
+                                    stroke-dashoffset: 0;
+                                }
+                                50% {
+                                    stroke-dasharray: 90 150;
+                                    stroke-dashoffset: -35;
+                                }
+                                100% {
+                                    stroke-dasharray: 90 150;
+                                    stroke-dashoffset: -124;
+                                }
+                            }
+                        </style>
+
+                        <g>
+                            <circle class="spinner" cx="25" cy="25" r="20" />
+                        </g>
+                    </svg>
+                </div>
+
                 <div id="article-list" class="article-list"></div>
 
                 <hr />
