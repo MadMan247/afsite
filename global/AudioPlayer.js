@@ -1,10 +1,10 @@
 const songSrc = '/pages/sotm/song.mp3';
 const container = document.getElementById('audio-container');
-
+//TODO: Nuke and replace with a NPM alternative
 const seekbarWidth = 4;
 const targetBars = 100;
 const scale = 0.4;
-const HFCO = 1.3;
+const HFCO = 1.0;
 
 function getCanvasWidth() {
     if (window.innerWidth > 1920) {
@@ -36,13 +36,20 @@ function createWaveformPlayer(container, songSrc) {
 
     const controls = document.createElement("div");
     controls.className = "controls";
-    controls.style.marginTop = "10px";
+    controls.style.marginTop = "1.1rem";
     controls.style.display = "flex";
     controls.style.alignItems = "center";
-    controls.style.gap = "10px";
+    controls.style.gap = "1.1rem";
 
     const playPauseBtn = document.createElement("button");
     playPauseBtn.textContent = "▶️";
+    playPauseBtn.className = "mmfngh_creaming";
+    playPauseBtn.style.padding = ".3rem 1rem";
+    playPauseBtn.style.textAlign = "center";
+    playPauseBtn.style.borderRadius = ".3rem";
+    playPauseBtn.style.color = "white";
+    playPauseBtn.style.backgroundColor = "#0073e6";
+    playPauseBtn.style.fontSize = "1rem";
 
     const volumeSlider = document.createElement("input");
     volumeSlider.type = "range";
