@@ -1,159 +1,158 @@
 import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
 import { loadAdsInElement } from "/global/adlink.js";
 
-const jsonPath = '/data/articles/index.json';
-const listPath = '/articles/list';
+const JSON_PATH = "/data/articles/index.json";
+const LIST_PATH = "/articles/list";
 
-//No DOMContentLoaded event listener because this script should ALWAYS be deferred
-//<script src="some-src" type="module" defer></script>
+const articleStore = new Map();
 
-export async function loadArticle(title, id) {
-    document.title = title;
+export async function fetchAllArticles() {
+  const main = document.getElementById("article-list");
 
-    const current = document.querySelector(`[data-website-id="${id}-article"]`);
-
-    if (!current) {
-        const articleContainer = document.createElement('div');
-        articleContainer.id = 'article-container';
-        articleContainer.className = 'article-container';
-        articleContainer.dataset.websiteId = `${id}-article`;
-
-        const articleRender = document.createElement('div');
-        articleRender.id = 'current-article';
-        articleRender.className = 'current-article';
-
-        const res = await fetch(`${listPath}/${id}`);
-        const text = await res.text();
-        articleRender.innerHTML = marked.parse(text);
-
-        const images = articleRender.querySelectorAll('img');
-        images.forEach(img => {
-            img.style.cursor = "zoom-in"; // Optional: gives a visual cue
-
-            img.addEventListener("click", () => {
-                if (img.requestFullscreen) {
-                    img.requestFullscreen();
-                }
-            });
-        });
-        // TODO: Make work on archaic browsers. OOGA BOOGA CAVEMAN "OOh, I'll use IE6 on my rockputer"
-        const allArticles = document.querySelectorAll('.article-preview');
-        allArticles.forEach(article => {
-            article.style.border = "0.1rem solid lightgray";
-            article.style.backgroundColor = "#1a1a1a";
-        });
-
-        const selectedArticle = document.querySelector(`[data-website-id="${id}"]`)
-        selectedArticle.style.border = "0.1rem solid #29bc25";
-        selectedArticle.style.backgroundColor = "#1f1f1f";
-
-        const adContainer = document.createElement('div');
-        adContainer.className = 'ad-container';
-        articleRender.appendChild(adContainer);
-
-        loadAdsInElement(articleRender);
-
-        articleContainer.appendChild(articleRender);
-        selectedArticle.after(articleContainer);
-
-        // Wait for DOM update/render
-        requestAnimationFrame(() => {
-            //Do it twice because of the initial update, then the marked update
-            requestAnimationFrame(() => {
-                articleRender.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start',
-                });
-            });
-        });
-    } else {
-        if (!current.classList.contains('inactive')) {
-            current.classList.add('inactive');
-            current.firstElementChild.classList.add('inactive');
-        } else {
-            current.classList.remove('inactive');
-            current.firstElementChild.classList.remove('inactive');
-            current.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start',
-            });
-        }
-    }
-
-}
-
-export async function showArticles() {
-    const main = document.getElementById("article-list");
-
-    const res = await fetch(jsonPath);
-    const list = await res.json();
-
-    /*
-    * Edward,
-    * Although I don't return the await promises, this works because of javascript implicity wrapping the promise in a return no matter what
-    * I don't know how to fix this, nor do I want to because it works reliably.
-    * You may ask why this race condition is no longer a race condition even if the for loop runs after all the other promises are resolved
-    * This is because js doesn't return a resolved promise until after the loop runs (according to chipeetie)
-    */
-
-    for (let item of list) {
+  fetch(JSON_PATH)
+    .then((res) => res.json())
+    .then((data) => {
+      data.map((articleCategory) => {
         const category = document.createElement("div");
-        category.className = 'category';
+        category.className = "category";
 
         const categoryName = document.createElement("h1");
-        categoryName.textContent = item.name;
+        categoryName.textContent = articleCategory.name;
 
         category.appendChild(categoryName);
 
-        for (let article of item.articles) {
-            const container = document.createElement("div");
-            container.dataset.websiteId = article.id;
-            container.className = 'article-preview';
+        for (const article of articleCategory.articles) {
+          const container = document.createElement("div");
+          container.id = article.id;
+          container.className = "article-preview";
 
-            const title = document.createElement("h2");
-            title.textContent = article.title;
+          const title = document.createElement("h2");
+          title.textContent = article.title;
 
-            const publishDate = document.createElement("small");
-            publishDate.textContent = `Published on: ${article.timestamp}`;
+          const publishDate = document.createElement("small");
+          publishDate.textContent = `Published on: ${article.timestamp}`;
 
-            const summary = document.createElement("p");
-            summary.textContent = article.summary;
+          const summary = document.createElement("p");
+          summary.textContent = article.summary;
 
-            const clickable = document.createElement("a");
-            clickable.href = `?id=${encodeURIComponent(article.id)}&title=${encodeURIComponent(article.title)}`;
-            clickable.className = "article-link";
+          const clickable = document.createElement("a");
+          clickable.href = `?article=${encodeURIComponent(article.id)}`;
+          clickable.className = "article-link";
 
-            clickable.onclick = (e) => {
-                e.preventDefault();
-                history.pushState({}, "", clickable.href);
-                loadArticle(article.title, article.id);
-            }
+          clickable.onclick = (e) => {
+            e.preventDefault();
+            history.replaceState(null, "", clickable.href);
+            loadArticle(article.title, article.id);
+          };
 
-            container.append(title, publishDate, summary, clickable);
-            category.appendChild(container);
+          container.append(title, publishDate, summary, clickable);
+          category.appendChild(container);
+
+          articleStore.set(`${article.id}`, {
+            title: article.title,
+            parentId: article.id,
+            articleId: `${article.id}-article`,
+            parentEl: container,
+            articleEl: null,
+            open: false,
+            rendered: false,
+          });
         }
 
         main.appendChild(category);
-    }
+      });
+    });
 }
 
+export async function loadArticle(title, id) {
+  document.title = title;
+
+  const current = articleStore.get(id);
+
+  if (!current) {
+    return;
+  }
+
+  if (!current.rendered) {
+    const articleContainer = document.createElement("div");
+    articleContainer.id = current.articleId;
+    articleContainer.className = "article-container";
+
+    const articleRender = document.createElement("div");
+    articleRender.id = "current-article";
+    articleRender.className = "current-article";
+
+    fetch(`${LIST_PATH}/${id}.md`)
+      .then((res) => res.text())
+      .then((text) => {
+        articleRender.innerHTML = marked.parse(text);
+      });
+
+    const images = articleRender.querySelectorAll("img");
+    for (const img of images) {
+      img.stye.cursor = "zoom-in";
+
+      img.addEventListener("click", () => {
+        if (img.requestFullscreen || webkit.requestFullscreen) {
+          img.requestFullscreen();
+        }
+      });
+    }
+
+    const adContainer = document.createElement("div");
+    adContainer.classname = "ad-container";
+    articleRender.appendChild(adContainer);
+
+    loadAdsInElement(articleRender);
+
+    current.articleEl = articleContainer;
+
+    articleContainer.appendChild(articleRender);
+    current.parentEl.after(articleContainer);
+
+    current.rendered = true;
+    current.open = true;
+
+    current.articleEl.classList.add("active");
+    current.parentEl.classList.add("active");
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        current.articleEl.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      });
+    });
+  } else {
+    if (current.open) {
+      current.parentEl.classList.remove("active");
+      current.articleEl.classList.remove("active");
+      current.open = false;
+    } else {
+      current.parentEl.classList.add("active");
+      current.articleEl.classList.add("active");
+      current.open = true;
+      requestAnimationFrame(() => {
+        current.articleEl.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      });
+    }
+  }
+}
 
 export function getQueryParams() {
-    const params = new URLSearchParams(window.location.search);
+  const params = new URLSearchParams(window.location.search);
 
-    return {
-        id: params.get("id"),
-        title: params.get("title"),
-    }
+  return params.get("article");
 }
 
-await showArticles().then(() => {
-    const legacyScript = document.getElementById('legacy-script');
-    if (legacyScript) {
-        legacyScript.remove();
-    }
-    const { id, title } = getQueryParams();
-    if (id && title) {
-        loadArticle(title, id);
-    }
+fetchAllArticles().then(() => {
+  const article = articleStore.get(getQueryParams);
+
+  if (article) {
+    loadArticle(article.title, article.parentId);
+  }
 });
