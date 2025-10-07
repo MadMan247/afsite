@@ -184,6 +184,33 @@
         "link": "#1"
     },
     {
+        "date": "2025-07-26",
+        "time": "18:00",
+        "location": "Gin Mill (Bar None), Springfield IL",
+        "description": "Mix-X-Midwest pub crawl, and event containing about 26 bands across four bars in downtown springfield, with Acid Fog performing just before the local legends Nil8!",
+        "image": "pc.webp",
+        "link": "#1"
+    },
+    {
+        "date": "2025-08-29",
+        "time": "19:00",
+        "location": "Dumb Records, Springfield IL",
+        "description": "Mix-X-Midwest pub crawl, and event containing about 26 bands across four bars in downtown springfield, with Acid Fog performing just before the local legends Nil8!",
+        "image": "rlsdr.jpg",
+        "link": "#1"
+    },
+    {
+        "date": "2025-08-30",
+        "time": "21:00",
+        "location": "Buzzbomb Brewery, Springfield IL",
+        "description": "Tradition continues, as Acid Fog performs at the Healing Arts Festival 2025",
+        "image": "haf2025.png",
+        "link": "#1"
+    },
+
+
+
+    {
         "date": "1901-01-01",
         "time": "24:00",
         "location": "N/A",
