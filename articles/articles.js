@@ -62,7 +62,7 @@ export async function fetchAllArticles() {
 
         main.appendChild(category);
       });
-      console.log(articleStore);
+      //console.log(articleStore);
     });
 }
 
