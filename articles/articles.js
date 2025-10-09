@@ -3,13 +3,14 @@ import { loadAdsInElement } from "/global/adlink.js";
 
 const JSON_PATH = "/data/articles/index.json";
 const LIST_PATH = "/articles/list";
+const TRANS_TIME = 400;
 
 const articleStore = new Map();
 
 export async function fetchAllArticles() {
   const main = document.getElementById("article-list");
 
-  fetch(JSON_PATH)
+  return fetch(JSON_PATH)
     .then((res) => res.json())
     .then((data) => {
       data.map((articleCategory) => {
@@ -42,7 +43,7 @@ export async function fetchAllArticles() {
           clickable.onclick = (e) => {
             e.preventDefault();
             history.replaceState(null, "", clickable.href);
-            loadArticle(article.title, article.id);
+            loadArticle(article.id);
           };
 
           container.append(title, publishDate, summary, clickable);
@@ -61,13 +62,14 @@ export async function fetchAllArticles() {
 
         main.appendChild(category);
       });
+      console.log(articleStore);
     });
 }
 
-export async function loadArticle(title, id) {
-  document.title = title;
-
+export async function loadArticle(id) {
   const current = articleStore.get(id);
+
+  document.title = current.title;
 
   if (!current) {
     return;
@@ -93,9 +95,7 @@ export async function loadArticle(title, id) {
       img.stye.cursor = "zoom-in";
 
       img.addEventListener("click", () => {
-        if (img.requestFullscreen || webkit.requestFullscreen) {
-          img.requestFullscreen();
-        }
+        img.requestFullscreen();
       });
     }
 
@@ -113,34 +113,30 @@ export async function loadArticle(title, id) {
     current.rendered = true;
     current.open = true;
 
+    scrollAfterTransition(current.articleEl);
     current.articleEl.classList.add("active");
     current.parentEl.classList.add("active");
-
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        current.articleEl.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      });
-    });
   } else {
     if (current.open) {
+      current.open = false;
       current.parentEl.classList.remove("active");
       current.articleEl.classList.remove("active");
-      current.open = false;
     } else {
-      current.parentEl.classList.add("active");
-      current.articleEl.classList.add("active");
       current.open = true;
-      requestAnimationFrame(() => {
-        current.articleEl.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      });
+      current.articleEl.classList.add("active");
+      current.parentEl.classList.add("active");
+      scrollAfterTransition(current.articleEl);
     }
   }
+}
+
+export function scrollAfterTransition(element) {
+  setTimeout(() => {
+    element.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }, TRANS_TIME);
 }
 
 export function getQueryParams() {
@@ -150,10 +146,12 @@ export function getQueryParams() {
 }
 
 fetchAllArticles().then(() => {
-  const article = articleStore.get(getQueryParams);
+  document.documentElement.style.setProperty("--trans-time", `${TRANS_TIME}ms`);
+
+  const article = getQueryParams();
 
   if (article) {
-    loadArticle(article.title, article.parentId);
+    loadArticle(decodeURIComponent(article));
   }
 
   document.getElementById("loader").remove();

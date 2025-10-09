@@ -1,4 +1,7 @@
-/*TODO: merge with ../../global/index.css?*/
+:root {
+    --trans-time: 400ms;
+}
+
 main {
     width: 100%;
 }
@@ -23,7 +26,7 @@ main {
     padding: 0.5rem;
     gap: 1rem;
 
-    transition: 400ms ease;
+    transition: var(--trans-time) ease;
     box-sizing: border-box;
 }
 
@@ -51,7 +54,7 @@ main {
 
     background-color: #1a1a1a;
 
-    transition: 400ms ease;
+    transition: var(--trans-time) ease;
     box-sizing: border-box;
 }
 
@@ -85,7 +88,7 @@ main {
 
     visibility: visible;
 
-    transition: 400ms ease;
+    transition: var(--trans-time) ease;
     box-sizing: border-box;
 
     opacity: 0;
@@ -112,7 +115,7 @@ main {
 
     height: fit-content;
 
-    transition: 400ms ease;
+    transition: var(--trans-time) ease;
     background-color: #1a1a1a;
 }
 
@@ -142,22 +145,4 @@ img:fullscreen {
     margin: 0;
     padding: 0;
     display: block;
-}
-
-@keyframes move-out-the-way {
-    from {
-        height: 90dvh;
-    }
-    to {
-        height: 15dvh;
-    }
-}
-
-@keyframes move-in-the-way {
-    from {
-        height: 0;
-    }
-    to {
-        height: 90dvh;
-    }
 }
