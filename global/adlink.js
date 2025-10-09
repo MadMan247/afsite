@@ -37,6 +37,7 @@ export async function loadAds() {
             const adLink = document.createElement("a");
             adLink.href = adObj.adLink;
             adLink.title = adObj.adTitle;
+            adLink.target = "_blank";
 
             const adImg = document.createElement("img");
             adImg.src = `${imgPath}/${adObj.adFile}`;
