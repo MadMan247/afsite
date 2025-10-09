@@ -3,7 +3,7 @@ import { loadAdsInElement } from "/global/adlink.js";
 
 const JSON_PATH = "/data/articles/index.json";
 const LIST_PATH = "/articles/list";
-const TRANS_TIME = 400; // https://images-ext-1.discordapp.net/external/F1hLio7p9HdbT8qk74jq9yPAZ1KwKwgFKz2VzKGcHOA/https/media.tenor.com/PJE6xnzmoXAAAAPo/our-time-is-now-time-is-now.mp4
+const TRANS_TIME = 400;
 
 const articleStore = new Map();
 
