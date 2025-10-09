@@ -30,6 +30,10 @@ main {
     box-sizing: border-box;
 }
 
+a {
+    color:salmon;
+}
+
 .category {
     display: flex;
     flex-direction: column;
