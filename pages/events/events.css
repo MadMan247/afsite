@@ -1,3 +1,26 @@
+:root {
+    --trans-time: 500ms;
+}
+
+hr {
+    width: 95vw;
+    height: 0.1rem;
+    background-color: lightgrey;
+    border: none;
+}
+
+body {
+    min-height: 100dvh;
+}
+
+.loader {
+    display: grid;
+    place-items: center;
+    min-height: 50vh;
+    width: 100%;
+    margin-top: 2rem;
+}
+
 .content {
     position: relative;
     display: flex;
@@ -11,6 +34,8 @@
     min-height: fit-content;
 
     align-items: center;
+
+    gap: 1rem;
 }
 
 .event-dropdown {
@@ -19,14 +44,22 @@
     flex-direction: column;
 
     width: 100%;
+    min-height: 8rem;
 
     justify-content: center;
     align-items: center;
 
-    gap: 2rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
     border-radius: 10px;
+    box-sizing: border-box;
+    transition:
+        max-height var(--trans-time) ease,
+        opacity var(--trans-time) ease,
+        overflow,
+        gap var(--trans-time) ease;
+}
+
+.event-dropdown.active {
+    gap: 1rem;
 }
 
 .events-container {
@@ -36,22 +69,30 @@
     flex-wrap: wrap;
 
     width: 100%;
+    max-height: 0;
 
     justify-content: center;
 
     gap: 1rem;
+    opacity: 0;
 
-    /*transition: all 1.5s ease-in-out;*/
     overflow: hidden;
+    box-sizing: border-box;
+    transition:
+        max-height var(--trans-time) ease,
+        opacity var(--trans-time) ease,
+        overflow,
+        gap;
 }
 
-.close {
-    min-height: 8rem;
-    max-height: 8rem;
+.events-container.active {
+    max-height: 800vh;
+    opacity: 1;
+    overflow: visible;
 }
 
 .dropbtn {
-    position: absolute;
+    position: relative;
     top: 0;
 
     height: 8rem;
@@ -66,6 +107,7 @@
     border-radius: 10px;
     cursor: pointer;
     z-index: 2;
+    box-sizing: border-box;
 }
 
 .dropbtn:disabled {
@@ -78,21 +120,8 @@
     right: 5%;
     top: 0;
     transform: translateY(calc(4rem - 10px));
-    transition: 1000ms ease;
+    transition: var(--trans-time) ease;
     pointer-events: none;
-}
-
-.open {
-    min-height: 8rem;
-    max-height: fit-content;
-}
-
-.open .events-container {
-    /*visibility: visible;*/
-    opacity: 1;
-    margin-top: 9rem;
-    padding-top: 1.25rem;
-    padding-bottom: 1rem;
 }
 
 .event {
@@ -106,7 +135,7 @@
     justify-content: space-between;
     align-items: center;
 
-    padding: .75rem;
+    padding: 0.75rem;
 
     background-color: #1a1a1a;
     text-decoration: none;
