@@ -1,184 +1,193 @@
-const songSrc = '/pages/sotm/song.mp3';
-const container = document.getElementById('audio-container');
-//TODO: Nuke and replace with a NPM alternative
-const seekbarWidth = 4;
-const targetBars = 100;
-const scale = 0.4;
-const HFCO = 1.0;
+const SONG_SRC = "/pages/sotm/song.mp3";
+const SONG_TITLE = "Opioid Dose (Ed Mix Early2)";
+const SONG_ARTIST = "Acid Fog";
 
-function getCanvasWidth() {
-    if (window.innerWidth > 1920) {
-        return window.innerWidth * scale;
-    } else if (window.innerWidth < 1000) {
-        return Math.floor(window.innerWidth * (scale*2));
-    } else {
-        return 855;
-    }
-    // if (window.innerWidth > 768) {
-    //     return Math.floor(window.innerWidth * scale);
-    // } else {
-    //     return Math.floor(window.innerWidth * (scale*2));
-    // }
-}
+window.addEventListener("DOMContentLoaded", () => {
+  // --- DOM Element References ---
+  const audioPlayer = document.getElementById("audioPlayer");
+  const playPauseBtn = document.getElementById("playPauseBtn");
+  const playIcon = document.getElementById("playIcon");
+  const pauseIcon = document.getElementById("pauseIcon");
+  const volumeSlider = document.getElementById("volumeSlider");
+  const currentTimeEl = document.getElementById("currentTime");
+  const totalDurationEl = document.getElementById("totalDuration");
+  const songTitleEl = document.getElementById("songTitle");
+  const artistNameEl = document.getElementById("artistName");
+  const canvas = document.getElementById("waveformCanvas");
+  const canvasCtx = canvas.getContext("2d");
+  const downloadBtn = document.getElementById("downloadBtn");
 
-function createWaveformPlayer(container, songSrc) {
-    let hoverX = null;
+  // --- Audio API Setup ---
+  let audioContext;
+  let analyser;
+  let source;
+  let dataArray;
+  let isAudioContextInitialized = false;
 
-    const player = document.createElement("div");
-    player.className = "player";
+  // --- State Variables ---
+  let hoverX = -1; // Tracks mouse X position for the hover indicator
 
-    const canvas = document.createElement("canvas");
-    canvas.width = getCanvasWidth();
-    canvas.height = 100;
-    canvas.style.background = "#1e1e1e";
-    canvas.style.border = "1px solid #333";
-    canvas.style.cursor = "pointer";
+  // --- Initialization ---
+  resizeCanvas();
+  window.addEventListener("resize", resizeCanvas);
+  loadDefaultAudio();
+  setDownloadName();
 
-    const controls = document.createElement("div");
-    controls.className = "controls";
-    controls.style.marginTop = "1.1rem";
-    controls.style.display = "flex";
-    controls.style.alignItems = "center";
-    controls.style.gap = "1.1rem";
+  /**
+   * Loads a default audio file.
+   */
+  function loadDefaultAudio() {
+    audioPlayer.src = SONG_SRC;
+    songTitleEl.textContent = SONG_TITLE;
+    artistNameEl.textContent = SONG_ARTIST;
+  }
 
-    const playPauseBtn = document.createElement("button");
-    playPauseBtn.textContent = "▶️";
-    playPauseBtn.className = "mmfngh_creaming";
-    playPauseBtn.style.padding = ".3rem 1rem";
-    playPauseBtn.style.textAlign = "center";
-    playPauseBtn.style.borderRadius = ".3rem";
-    playPauseBtn.style.color = "white";
-    playPauseBtn.style.backgroundColor = "#0073e6";
-    playPauseBtn.style.fontSize = "1rem";
+  /**
+   * Initializes the AudioContext.
+   */
+  function initializeAudioContext() {
+    if (isAudioContextInitialized) return;
 
-    const volumeSlider = document.createElement("input");
-    volumeSlider.type = "range";
-    volumeSlider.min = 0;
-    volumeSlider.max = 1;
-    volumeSlider.step = 0.01;
-    volumeSlider.value = 1;
-    volumeSlider.style.width = "100px";
-
-    const audio = document.createElement("audio");
-    audio.src = songSrc;
-    audio.crossOrigin = "anonymous";
-
-    controls.appendChild(playPauseBtn);
-    controls.appendChild(volumeSlider);
-    player.appendChild(canvas);
-    player.appendChild(controls);
-    player.appendChild(audio);
-    container.appendChild(player);
-
-    const ctx = canvas.getContext("2d");
-
-    const audioCtx = new window.AudioContext();
-    const source = audioCtx.createMediaElementSource(audio);
-    const analyser = audioCtx.createAnalyser();
-    analyser.fftSize = 256; //power of 2
-    analyser.smoothingTimeConstant = 0.85;
+    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    analyser = audioContext.createAnalyser();
+    analyser.fftSize = 256;
+    source = audioContext.createMediaElementSource(audioPlayer);
 
     source.connect(analyser);
-    analyser.connect(audioCtx.destination);
+    analyser.connect(audioContext.destination);
 
     const bufferLength = analyser.frequencyBinCount;
-    const dataArray = new Uint8Array(bufferLength);
+    dataArray = new Uint8Array(bufferLength);
 
-    playPauseBtn.onclick = () => {
-        if (audio.paused) {
-            audioCtx.resume();
-            audio.play();
-            playPauseBtn.textContent = "⏸️";
-        } else {
-            audio.pause();
-            playPauseBtn.textContent = "▶️";
-        }
-    };
+    isAudioContextInitialized = true;
+  }
 
-    volumeSlider.addEventListener("input", () => {
-        audio.volume = volumeSlider.value;
-    });
+  /**
+   * Draws the waveform and hover indicator on the canvas.
+   */
+  function drawWaveform() {
+    requestAnimationFrame(drawWaveform);
 
-    canvas.addEventListener("click", (e) => {
-        const rect = canvas.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const percent = x / (canvas.width * HFCO);
-        audio.currentTime = percent * audio.duration;
-        audio.play();
-        playPauseBtn.textContent = "⏸️";
-    });
+    canvasCtx.fillStyle = "#1a2b1a";
+    canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
 
-    canvas.addEventListener("mousemove", (e) => {
-        const rect = canvas.getBoundingClientRect();
-        hoverX = e.clientX - rect.left;
-    });
+    if (!isAudioContextInitialized) {
+      canvasCtx.strokeStyle = "#00ff00";
+      canvasCtx.beginPath();
+      canvasCtx.moveTo(0, canvas.height / 2);
+      canvasCtx.lineTo(canvas.width, canvas.height / 2);
+      canvasCtx.stroke();
+    } else {
+      analyser.getByteFrequencyData(dataArray);
 
-    canvas.addEventListener("mouseleave", () => {
-        hoverX = null;
-    });
+      const bufferLength = analyser.frequencyBinCount;
+      const barWidth = (canvas.width / bufferLength) * 1.5;
+      let x = 0;
+      const progress = audioPlayer.duration
+        ? audioPlayer.currentTime / audioPlayer.duration
+        : 0;
 
-    function draw() {
-        requestAnimationFrame(draw);
-        //is the below line what sets the max frequency value?
-        analyser.getByteFrequencyData(dataArray);
-
-        const progress = audio.currentTime / audio.duration || 0;
-        const canvasWidth = canvas.width * HFCO;
-        const canvasHeight = canvas.height;
-        const playedWidth = canvasWidth * progress;
-
-        // 1. Draw full dark background
-        ctx.fillStyle = "#1e1e1e";
-        ctx.fillRect(0, 0, canvasWidth, canvasHeight);
-
-        // 2. Overlay "played" portion in lighter grey
-        ctx.fillStyle = "#555"; // Light grey progress background
-        ctx.fillRect(0, 0, playedWidth, canvasHeight);
-
-        // 3. Draw bars on top
-        const barWidth = canvasWidth / targetBars;
-        const smoothed = downsampleArray(dataArray, targetBars);
-
-        let barHeight;
-
-        for (let i = 0; i < smoothed.length; i++) {
-            barHeight = (smoothed[i] / 720)  * canvasHeight * Math.log(i + 2);
-            const x = i * barWidth;
-            const y = canvasHeight - barHeight;
-
-            // const boostFactor = Math.pow(i / smoothed.length, 2);
-            // barHeight *= 1 + boostFactor * 1.2;
-
-            ctx.fillStyle = "#4fc3f7";
-            ctx.fillRect(x, y, barWidth - 1, barHeight);
-        }
-
-        if (hoverX !== null) {
-            ctx.fillStyle = "#aaa";
-            ctx.fillRect(hoverX - seekbarWidth / 2, 0, seekbarWidth, canvas.height);
-        }
+      for (let i = 0; i < bufferLength; i++) {
+        const barHeight = dataArray[i] * (canvas.height / 255);
+        const isPlayed = x / canvas.width < progress;
+        canvasCtx.fillStyle = isPlayed ? "#00ff00" : "#005000";
+        canvasCtx.fillRect(
+          x,
+          (canvas.height - barHeight) / 2,
+          barWidth,
+          barHeight,
+        );
+        x += barWidth + 1;
+      }
     }
 
-    draw();
-}
-
-function downsampleArray(arr, targetCount) {
-    const step = arr.length / targetCount;
-    const result = [];
-    for (let i = 0; i < targetCount; i++) {
-        const start = Math.floor(i * step);
-        const end = Math.floor((i + 1) * step);
-        let avg = 0;
-        for (let j = start; j < end; j++) {
-            avg += arr[j] || 0;
-        }
-        avg /= (end - start || 1);
-        result.push(avg);
+    // --- NEW: Draw Hover Indicator ---
+    if (hoverX !== -1 && audioPlayer.duration) {
+      canvasCtx.fillStyle = "#ffff00"; // Bright yellow for the indicator
+      canvasCtx.fillRect(hoverX, 0, 2, canvas.height); // Draw a 2px wide vertical line
     }
-    return result;
-}
+  }
 
+  /**
+   * Toggles audio playback.
+   */
+  function togglePlayPause() {
+    if (!audioPlayer.src) return;
+    if (!isAudioContextInitialized) initializeAudioContext();
 
-if (container) {
-    createWaveformPlayer(container, songSrc);
-}
+    if (audioPlayer.paused) {
+      audioPlayer.play();
+      playIcon.style.display = "none";
+      pauseIcon.style.display = "block";
+    } else {
+      audioPlayer.pause();
+      playIcon.style.display = "block";
+      pauseIcon.style.display = "none";
+    }
+  }
+
+  /**
+   * Formats time in seconds to MM:SS.
+   */
+  function formatTime(time) {
+    if (isNaN(time)) return "00:00";
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+  }
+
+  /**
+   * Sets canvas dimensions.
+   */
+  function resizeCanvas() {
+    canvas.width = canvas.clientWidth * window.devicePixelRatio;
+    canvas.height = canvas.clientHeight * window.devicePixelRatio;
+  }
+
+  function setDownloadName() {
+    downloadBtn.download = `${SONG_TITLE} - ${SONG_ARTIST}.mp3`;
+  }
+
+  // --- Event Listeners ---
+
+  playPauseBtn.addEventListener("click", togglePlayPause);
+
+  volumeSlider.addEventListener("input", (event) => {
+    audioPlayer.volume = event.target.value;
+  });
+
+  audioPlayer.addEventListener("timeupdate", () => {
+    currentTimeEl.textContent = formatTime(audioPlayer.currentTime);
+  });
+
+  audioPlayer.addEventListener("loadedmetadata", () => {
+    totalDurationEl.textContent = formatTime(audioPlayer.duration);
+  });
+
+  canvas.addEventListener("click", (event) => {
+    if (!audioPlayer.duration) return;
+    const rect = canvas.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const percentage = x / rect.width;
+    audioPlayer.currentTime = percentage * audioPlayer.duration;
+  });
+
+  // --- NEW: Listeners for the hover indicator ---
+  canvas.addEventListener("mousemove", (event) => {
+    const rect = canvas.getBoundingClientRect();
+    // Scale mouse position to canvas resolution
+    hoverX = (event.clientX - rect.left) * window.devicePixelRatio;
+  });
+
+  canvas.addEventListener("mouseleave", () => {
+    hoverX = -1; // Reset when mouse leaves the canvas
+  });
+
+  audioPlayer.addEventListener("ended", () => {
+    playIcon.style.display = "block";
+    pauseIcon.style.display = "none";
+  });
+
+  // --- Start the animation loop ---
+  drawWaveform();
+});
