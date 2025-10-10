@@ -1,82 +1,184 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Hey, check out these events. You might want to go to one, or relish the past.">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#00a300">
-    <meta name="theme-color" content="#ffffff">
-    <meta name="viewport" content="width=device-width, initial-scale=0.7">
-    <title>Upcoming and Past events</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Hey, check out these events. You might want to go to one, or relish the past."
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/apple-touch-icon.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+        <meta name="msapplication-TileColor" content="#00a300" />
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="viewport" content="width=device-width, initial-scale=0.7" />
+        <title>Upcoming and Past events</title>
 
-    <link rel="stylesheet" type="text/css" href="/global/index.css">
-    <link rel="stylesheet" type="text/css" href="/pages/events/events.css">
+        <link rel="stylesheet" type="text/css" href="/global/index.css" />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="/pages/events/events.css"
+        />
 
-    <script src="/global/adlink.js" defer type="module"></script>
-    <script defer src="https://analytics.edsmcserv.com/script.js" data-website-id="e331402a-10ae-4030-b5d0-14d2eae72744"></script>
-    <script defer src="/pages/events/events.js" type="module"></script>
-    <script defer src="/global/index.js" type="module"></script>
+        <script src="/global/adlink.js" defer type="module"></script>
+        <script
+            defer
+            src="https://analytics.edsmcserv.com/script.js"
+            data-website-id="e331402a-10ae-4030-b5d0-14d2eae72744"
+        ></script>
+        <script defer src="/pages/events/events.js" type="module"></script>
+        <script defer src="/global/index.js" type="module"></script>
+    </head>
+    <body>
+        <header class="container">
+            <h1>Events</h1>
+            <nav>
+                <script defer src="/global/NavBar.js" type="module"></script>
+            </nav>
+        </header>
 
-    <style id="upcoming-drp-style"></style>
-    <style id="past-drp-style"></style>
-</head>
-<body>
-    <header class="container">
-        <h1>Events</h1>
-        <nav>
-            <script defer src="/global/NavBar.js" type="module"></script>
-        </nav>
-    </header>
+        <main class="content">
+            <div class="loader" id="loader">
+                <svg
+                    style="height: 12rem; width: 12rem"
+                    width="48"
+                    height="48"
+                    viewBox="0 0 50 50"
+                    xmlns="http://www.w3.org/2000/svg"
+                    role="img"
+                    aria-label="Loading"
+                >
+                    <title>Loading</title>
+                    <style>
+                        .spinner {
+                            stroke: #065c0e;
+                            stroke-linecap: round;
+                            stroke-width: 4;
+                            fill: none;
+                            stroke-dasharray: 1 150;
+                            stroke-dashoffset: 0;
+                            transform-origin: 25px 25px;
+                            animation:
+                                dash 1.4s ease-in-out infinite,
+                                rotate 2s linear infinite;
+                        }
+                        @keyframes rotate {
+                            100% {
+                                transform: rotate(360deg);
+                            }
+                        }
+                        @keyframes dash {
+                            0% {
+                                stroke-dasharray: 1 150;
+                                stroke-dashoffset: 0;
+                            }
+                            50% {
+                                stroke-dasharray: 90 150;
+                                stroke-dashoffset: -35;
+                            }
+                            100% {
+                                stroke-dasharray: 90 150;
+                                stroke-dashoffset: -124;
+                            }
+                        }
+                    </style>
 
-    <main class="content">
-        <div class="event-dropdown close">
-            <button class="dropbtn" id="upcoming-btn">
-                Upcoming Events
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                     stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                    <g>
+                        <circle class="spinner" cx="25" cy="25" r="20" />
+                    </g>
+                </svg>
+            </div>
+
+            <div
+                class="event-dropdown"
+                id="upcoming-drpdwn"
+                style="display: none"
+            >
+                <button class="dropbtn" id="upcoming-btn">
+                    Upcoming Events
+                    <svg
+                        id="upcoming-arrw"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <line x1="12" y1="19" x2="12" y2="5" />
+                        <polyline points="5 12 12 5 19 12" />
+                    </svg>
+                </button>
+                <div class="events-container" id="upcoming-events"></div>
+            </div>
+
+            <hr />
+
+            <div class="event-dropdown" id="past-drpdwn" style="display: none">
+                <button class="dropbtn" id="past-btn">
+                    Past Events
+                    <svg
+                        id="past-arrw"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <line x1="12" y1="19" x2="12" y2="5" />
+                        <polyline points="5 12 12 5 19 12" />
+                    </svg>
+                </button>
+                <div class="events-container" id="past-events"></div>
+            </div>
+
+            <button id="scroll-to-top-btn" class="scroll-to-top-btn">
+                <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
                     <line x1="12" y1="19" x2="12" y2="5" />
                     <polyline points="5 12 12 5 19 12" />
                 </svg>
             </button>
-            <div class="events-container" id="upcoming-events" style="height: 0px;">
 
-            </div>
-        </div>
+            <div class="ad-container"></div>
+        </main>
 
-        <div class="event-dropdown close">
-            <button class="dropbtn" id="past-btn">
-                Past Events
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                     stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
-                    <line x1="12" y1="19" x2="12" y2="5" />
-                    <polyline points="5 12 12 5 19 12" />
-                </svg>
-            </button>
-            <div class="events-container" id="past-events" style="height: 0px;">
-
-            </div>
-        </div>
-
-        <button id="scroll-to-top-btn" class="scroll-to-top-btn">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                 stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
-                <line x1="12" y1="19" x2="12" y2="5" />
-                <polyline points="5 12 12 5 19 12" />
-            </svg>
-        </button>
-
-        <div class="ad-container">
-
-        </div>
-    </main>
-
-    <footer class="container" id="footer">
-        <script defer src="/global/Footer.js" type="module"></script>
-    </footer>
-</body>
+        <footer class="container" id="footer">
+            <script defer src="/global/Footer.js" type="module"></script>
+        </footer>
+    </body>
 </html>

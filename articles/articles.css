@@ -6,10 +6,14 @@ main {
     width: 100%;
 }
 
+body {
+    min-height: 100dvh;
+}
+
 .loader {
     display: grid;
     place-items: center;
-    min-height: 70vh;
+    min-height: 50vh;
     width: 100%;
     margin-top: 2rem;
 }

@@ -8,8 +8,6 @@ const EL_IDS = {
   pastEventsContainer: "past-events",
   upcomingArrw: "upcoming-arrw",
   pastArrw: "past-arrw",
-  upcomingDrpdwn: "upcoming-drpdwn",
-  pastDrpdwn: "past-drpdwn",
 };
 
 const eventStore = new Map();
@@ -69,21 +67,18 @@ function showUpcomingEvents(e) {
   const svg = eventStore.get(EL_IDS.upcomingArrw);
 
   button.disabled = true;
+  svg.style.transform = "translateY(calc(4rem - 10px)) rotate(0deg)";
 
-  if (eventContainer.classList.contains("active")) {
+  if (parent.classList.contains("active")) {
+    parent.classList.remove("active");
     eventContainer.classList.remove("active");
-    svg.style.transform = "translateY(calc(4rem - 10px)) rotate(0deg)";
   } else {
     parent.classList.add("active");
     eventContainer.classList.add("active");
-    svg.style.transform = "translateY(calc(4rem - 10px)) rotate(180deg)";
   }
 
   setTimeout(() => {
     button.disabled = false;
-    if (!eventContainer.classList.contains("active")) {
-      parent.classList.remove("active");
-    }
   }, TRANS_TIME);
 }
 
@@ -96,21 +91,18 @@ function showPastEvents(e) {
   const svg = eventStore.get(EL_IDS.pastArrw);
 
   button.disabled = true;
+  svg.style.transform = "translateY(calc(4rem - 10px)) rotate(0deg)";
 
-  if (eventContainer.classList.contains("active")) {
+  if (parent.classList.contains("active")) {
+    parent.classList.remove("active");
     eventContainer.classList.remove("active");
-    svg.style.transform = "translateY(calc(4rem - 10px)) rotate(0deg)";
   } else {
     parent.classList.add("active");
     eventContainer.classList.add("active");
-    svg.style.transform = "translateY(calc(4rem - 10px)) rotate(180deg)";
   }
 
   setTimeout(() => {
     button.disabled = false;
-    if (!eventContainer.classList.contains("active")) {
-      parent.classList.remove("active");
-    }
   }, TRANS_TIME);
 }
 
@@ -153,10 +145,6 @@ async function fetchAllEvents() {
         const eventCard = createEventCard(event);
         pastEventsContainer.appendChild(eventCard);
       }
-      eventStore
-        .get(EL_IDS.upcomingDrpdwn)
-        .appendChild(upcomingEventsContainer);
-      eventStore.get(EL_IDS.pastDrpdwn).appendChild(pastEventsContainer);
     });
 }
 
@@ -173,8 +161,4 @@ fetchAllEvents().then(() => {
   eventStore.get(EL_IDS.pastBtn).addEventListener("click", showPastEvents);
 
   document.documentElement.style.setProperty("--trans-time", `${TRANS_TIME}ms`);
-
-  document.getElementById("loader").remove();
-  eventStore.get(EL_IDS.upcomingDrpdwn).style = "";
-  eventStore.get(EL_IDS.pastDrpdwn).style = "";
 });
