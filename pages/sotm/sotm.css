@@ -1,0 +1,146 @@
+.player-align {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: fit-content;
+}
+
+.player-container {
+    width: 100%;
+    max-width: 600px;
+    background-color: #c2c2c2; /* Classic beige/gray */
+    border: 4px solid #555;
+    box-shadow:
+        inset -4px -4px 0px 0px #888,
+        inset 4px 4px 0px 0px #ffffff;
+    padding: 1.5rem;
+    color: #333;
+}
+
+/* --- Canvas & Screen --- */
+.screen {
+    background-color: #1a2b1a; /* Dark green LCD screen */
+    border: 2px solid #222;
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+#waveformCanvas {
+    width: 100%;
+    height: 120px;
+    cursor: pointer;
+}
+
+/* --- Info & Time Display --- */
+.song-info {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+#songTitle {
+    font-size: 2rem;
+    text-shadow: 1px 1px #fff;
+}
+#artistName {
+    font-size: 1.2rem;
+    color: #444;
+}
+.time-display {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    background: #222;
+    color: #00ff00; /* Bright green text */
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    border: 2px solid #444;
+}
+
+/* --- Controls --- */
+.controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+/* --- Buttons --- */
+.btn {
+    font-family: "VT323", monospace;
+    font-size: 1.2rem;
+    padding: 0.75rem 1rem;
+    border: 2px solid #333;
+    background-color: #b0b0b0;
+    box-shadow:
+        inset -2px -2px 0px 0px #888,
+        inset 2px 2px 0px 0px #ffffff;
+    cursor: pointer;
+    transition: all 0.1s ease;
+}
+.btn:active {
+    box-shadow: inset 2px 2px 0px 0px #888;
+    transform: translateY(2px);
+}
+
+.play-pause-btn {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #d9534f; /* Red button */
+}
+.play-pause-btn svg {
+    width: 40px;
+    height: 40px;
+    fill: #fff;
+    filter: drop-shadow(2px 2px 0px #00000055);
+}
+.play-pause-btn:disabled {
+    background-color: #888;
+    cursor: not-allowed;
+}
+#pauseIcon {
+    display: none;
+}
+
+/* --- File Input --- */
+.file-download-label {
+    flex-grow: 1;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+}
+#audioFile {
+    display: none; /* Hide the actual input */
+}
+
+/* --- Volume Slider --- */
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-grow: 1;
+}
+#volumeSlider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 15px;
+    background: #555;
+    outline: none;
+    border: 2px solid #333;
+}
+#volumeSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #b0b0b0;
+    cursor: pointer;
+    border: 2px solid #333;
+    box-shadow:
+        inset -2px -2px 0px 0px #888,
+        inset 2px 2px 0px 0px #ffffff;
+}

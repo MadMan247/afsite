@@ -1,76 +1,175 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<script type="text/javascript" defer>
-    function getCurrentYear() {
-        return new Date().getFullYear();
-    }
-</script>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="This page features Acid Fog songs free to download monthly. They may be deep cut classics, unheard non-classics, or even titles from the officially released catalogs.">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#00a300">
-    <meta name="theme-color" content="#ffffff">
-    <meta name="viewport" content="width=device-width, initial-scale=0.7">
-    <title>Song of the Month</title>
-    <link rel="stylesheet" type="text/css" href="../../global/index.css">
-    <link rel="stylesheet" type="text/css" href="../../articles/articles.css">
-    <script src="/global/adlink.js" defer type="module"></script>
-    <script defer src="https://analytics.edsmcserv.com/script.js" data-website-id="e331402a-10ae-4030-b5d0-14d2eae72744"></script>
+    <script type="text/javascript" defer>
+        function getCurrentYear() {
+            return new Date().getFullYear();
+        }
+    </script>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="This page features Acid Fog songs free to download monthly. They may be deep cut classics, unheard non-classics, or even titles from the officially released catalogs."
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/apple-touch-icon.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+        <meta name="msapplication-TileColor" content="#00a300" />
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="viewport" content="width=device-width, initial-scale=0.7" />
+        <title>Song of the Month</title>
+        <link rel="stylesheet" type="text/css" href="../../global/index.css" />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="../../articles/articles.css"
+        />
+        <script src="/global/adlink.js" defer type="module"></script>
+        <script
+            defer
+            src="https://analytics.edsmcserv.com/script.js"
+            data-website-id="e331402a-10ae-4030-b5d0-14d2eae72744"
+        ></script>
 
-    <script defer src="/global/AudioPlayer.js" type="module"></script>
-    <link rel="stylesheet" href="/global/AudioPlayerStyle.css">
+        <script defer src="/global/AudioPlayer.js" type="module"></script>
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="../../pages/sotm/sotm.css"
+        />
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1>Acid Fog Articles</h1>
+            </header>
+            <nav>
+                <script type="module" src="../../global/NavBar.js"></script>
+            </nav>
 
+            <div class="article-content">
+                <div style="text-align: center"><h2>Song of the Month</h2></div>
 
-</head>
-<body>
-<div class="container">
-<header>
-    <h1>Acid Fog Articles</h1>
-</header>
-<nav>
-    <script type="module" src="../../global/NavBar.js"></script>
-</nav>
+                <div style="text-align: center">
+                    <img
+                        src="../../data/images/bucket/CHAF.jpg"
+                        alt="Alternative Acid Fog Demo Artwork"
+                        class="article-image"
+                    />
+                    <p class="caption">
+                        Flyer for the Richardson Clubhouse show
+                    </p>
+                </div>
+                <div style="text-align: center">
+                    <h3>&quot;Opioid Dose (Ed Mix Early2)&quot;</h3>
+                </div>
 
+                <div class="player-align">
+                    <div class="player-container">
+                        <!-- Canvas for Waveform Visualization -->
+                        <div class="screen">
+                            <canvas id="waveformCanvas"></canvas>
+                        </div>
 
+                        <!-- Audio Element (hidden) -->
+                        <audio id="audioPlayer" crossorigin="anonymous"></audio>
 
-    <div class="article-content">
-        <div style="text-align: center;"><h2>Song of the Month</h2></div>
+                        <!-- Song Information -->
+                        <div class="song-info">
+                            <h2 id="songTitle">Loading...</h2>
+                            <p id="artistName">Please wait</p>
+                        </div>
 
-        <div style="text-align: center;"><img src="../../data/images/bucket/CHAF.jpg" alt="Alternative Acid Fog Demo Artwork" class="article-image">
-            <p class="caption">Flyer for the Richardson Clubhouse show</p></div>
-        <div style="text-align: center;"><h3>&quot;Opioid Dose (Ed Mix Early2)&quot;</h3></div>
+                        <!-- Time Display -->
+                        <div class="time-display">
+                            <span id="currentTime">00:00</span>
+                            <span id="totalDuration">00:00</span>
+                        </div>
 
+                        <!-- Player Controls -->
+                        <div class="controls">
+                            <!-- File Upload -->
+                            <a
+                                class="btn file-download-label"
+                                href="/pages/sotm/song.mp3"
+                                id="downloadBtn"
+                                download="Acid Fog Song"
+                            >
+                                <strong>Download File</strong>
+                            </a>
 
-        <!-- Audio Player Container -->
-        <div class="audio-container" id="audio-container">
+                            <!-- Play/Pause Button -->
+                            <button
+                                id="playPauseBtn"
+                                class="btn play-pause-btn"
+                            >
+                                <svg id="playIcon" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"></path>
+                                </svg>
+                                <svg id="pauseIcon" viewBox="0 0 24 24">
+                                    <path
+                                        d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"
+                                    ></path>
+                                </svg>
+                            </button>
 
-            <!-- Download Button -->
-            <a href="/pages/sotm/song.mp3" class="download-button" download="Opioid Dose Live at the Richardson Clubhouse early2 - Acid Fog">Download</a>
-            <p>&copy; <span id="est"></span> Into the Depths Publishing. All rights reserved.</p>
+                            <!-- Volume Control -->
+                            <div class="volume-control">
+                                <span>VOL</span>
+                                <input
+                                    id="volumeSlider"
+                                    type="range"
+                                    min="0"
+                                    max="1"
+                                    step="0.01"
+                                    value="1"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Audio Player Container -->
+                <div class="audio-container" id="audio-container">
+                    <p style="text-align: center">
+                        &copy; <span id="est"></span> Into the Depths
+                        Publishing. All rights reserved.
+                    </p>
+                </div>
+
+                <!-- Article content continues... -->
+            </div>
+
+            <section>
+                <p></p>
+                <p class="caption">
+                    While we are providing this song to download free of charge,
+                    we do not authorize redistribution, alteration, derivative
+                    works, commerical use, or remixing. We are providing it with
+                    the intention that you'll listen to it, maybe with friends.
+                </p>
+            </section>
         </div>
-
-        <!-- Article content continues... -->
-
-    </div>
-
-    <section>
-        <p></p>
-        <p class="caption">While we are providing this song to download free of charge, we do not authorize redistribution, alteration, derivative works, commerical use, or remixing. We are providing it with the intention that you'll listen to it, maybe with friends. </p>
-    </section>
-</div>
-<div class="ad-container">
-
-</div>
-
-</body>
-<script>
-    document.getElementById('est').textContent = getCurrentYear();
-</script>
+        <div class="ad-container"></div>
+    </body>
+    <script>
+        document.getElementById("est").textContent = getCurrentYear();
+    </script>
 </html>
-
