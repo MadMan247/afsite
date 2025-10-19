@@ -207,6 +207,26 @@
     "image": "haf2025.png",
     "link": "#1"
   },
+  {
+    "date": "2025-11-01",
+    "time": "21:00",
+    "location": "Boondocks, 2909 N Dirksen Parkway, Springfield IL",
+    "description": "Acid Fog was added late, but a welcome addition nonetheless. A short promo reel was released to signal their inclusion",
+    "image": "llshow.webp",
+    "link": "#1"
+  },
+  {
+    "date": "2025-11-14",
+    "time": "21:00",
+    "location": "Dumb Records, Springfield IL",
+    "description": "Acid Fog has brought together an unforgetable lineup with NIL8 and Evan VS Michael",
+    "image": "afn8.jpg",
+    "link": "#1"
+  },
+
+
+
+
 
   {
     "date": "1901-01-01",
@@ -214,7 +234,7 @@
     "location": "N/A",
     "description": "Beginning of any Acid Fog concerts",
     "image": "afl.jpg",
-    "link": "/articles/Bookends.html"
+    "link": "#"
   },
   {
     "date": "2099-12-31",
@@ -222,6 +242,6 @@
     "location": "N/A",
     "description": "Bookend of all known gigs as of now",
     "image": "afl.jpg",
-    "link": "/articles/Bookends.html"
+    "link": "#"
   }
 ]
