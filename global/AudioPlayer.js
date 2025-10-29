@@ -1,5 +1,5 @@
 const SONG_SRC = "/pages/sotm/song.mp3";
-const SONG_TITLE = "Opioid Dose (Ed Mix Early2)";
+const SONG_TITLE = "Opioid Dose Live at the Richardson Clubhouse (Ed Mix Early2)";
 const SONG_ARTIST = "Acid Fog";
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -88,7 +88,7 @@ window.addEventListener("DOMContentLoaded", () => {
         : 0;
 
       for (let i = 0; i < bufferLength; i++) {
-        const barHeight = dataArray[i] * (canvas.height / 255);
+        const barHeight = Math.log(dataArray[i]) * (canvas.height / 255);
         const isPlayed = x / canvas.width < progress;
         canvasCtx.fillStyle = isPlayed ? "#00ff00" : "#005000";
         canvasCtx.fillRect(
