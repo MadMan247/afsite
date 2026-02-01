@@ -209,7 +209,7 @@
   },
   {
     "date": "2025-11-01",
-    "time": "21:00",
+    "time": "15:30",
     "location": "Boondocks, 2909 N Dirksen Parkway, Springfield IL",
     "description": "Acid Fog was added late, but a welcome addition nonetheless. A short promo reel was released to signal their inclusion",
     "image": "llshow.webp",
@@ -223,7 +223,14 @@
     "image": "afn8.jpg",
     "link": "https://peer.acidfog.com/w/fzRXwXNmZq156e2aNWWbTT"
   },
-
+  {
+    "date": "2026-01-04",
+    "time": "20:00",
+    "location": "Farewell Pub, Kansas City, MO",
+    "description": "Acid Fog plays in Missouri with Piltdown",
+    "image": "afmo.jpg",
+    "link": "#1"
+  },
 
 
 
