@@ -62,51 +62,78 @@ window.addEventListener("DOMContentLoaded", () => {
     isAudioContextInitialized = true;
   }
 
-  /**
-   * Draws the waveform and hover indicator on the canvas.
-   */
-  function drawWaveform() {
-    requestAnimationFrame(drawWaveform);
 
-    canvasCtx.fillStyle = "#1a2b1a";
-    canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
+    /**
+     * Draws the waveform and hover indicator on the canvas.
+     */
+    function drawWaveform() {
+        requestAnimationFrame(drawWaveform);
 
-    if (!isAudioContextInitialized) {
-      canvasCtx.strokeStyle = "#00ff00";
-      canvasCtx.beginPath();
-      canvasCtx.moveTo(0, canvas.height / 2);
-      canvasCtx.lineTo(canvas.width, canvas.height / 2);
-      canvasCtx.stroke();
-    } else {
-      analyser.getByteFrequencyData(dataArray);
+        canvasCtx.fillStyle = "#1a2b1a";
+        canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
 
-      const bufferLength = analyser.frequencyBinCount;
-      const barWidth = (canvas.width / bufferLength) * 1.5;
-      let x = 0;
-      const progress = audioPlayer.duration
-        ? audioPlayer.currentTime / audioPlayer.duration
-        : 0;
+        if (!isAudioContextInitialized) {
+            canvasCtx.strokeStyle = "#00ff00";
+            canvasCtx.lineWidth = 2;
+            canvasCtx.beginPath();
+            canvasCtx.moveTo(0, canvas.height / 2);
+            canvasCtx.lineTo(canvas.width, canvas.height / 2);
+            canvasCtx.stroke();
+        } else {
+            analyser.getByteFrequencyData(dataArray);
 
-      for (let i = 0; i < bufferLength; i++) {
-        const barHeight = Math.log(dataArray[i]) * (canvas.height / 255);
-        const isPlayed = x / canvas.width < progress;
-        canvasCtx.fillStyle = isPlayed ? "#00ff00" : "#005000";
-        canvasCtx.fillRect(
-          x,
-          (canvas.height - barHeight) / 2,
-          barWidth,
-          barHeight,
-        );
-        x += barWidth + 1;
-      }
+            const bufferLength = analyser.frequencyBinCount;
+            const nyquist = audioContext.sampleRate / 2;
+
+            // --- NEW: Define your target frequency range ---
+            const minFrequency = 100;
+            const maxFrequency = 17000;
+
+            // Calculate the starting and ending array indices (bins) for these frequencies
+            const minBin = Math.floor((minFrequency / nyquist) * bufferLength);
+            const maxBin = Math.min(
+                bufferLength,
+                Math.floor((maxFrequency / nyquist) * bufferLength)
+            );
+
+            // How many bins are we actually drawing?
+            const binsToDraw = maxBin - minBin;
+
+            // Calculate barWidth based ONLY on the visible bins so it fills the screen
+            const barWidth = canvas.width / binsToDraw;
+            let x = 0;
+            const progress = audioPlayer.duration
+                ? audioPlayer.currentTime / audioPlayer.duration
+                : 0;
+
+            // --- NEW: Loop from minBin up to maxBin ---
+            for (let i = minBin; i < maxBin; i++) {
+                // Calculate a relative index (0 to binsToDraw) so the boost scales properly
+                const relativeIndex = i - minBin;
+                const highFreqBoost = 1 + (relativeIndex / binsToDraw) * 1.4;
+
+                let barHeight = (dataArray[i] / 350) * canvas.height * highFreqBoost;
+                barHeight = Math.min(canvas.height, barHeight); // Cap at canvas height
+
+                const isPlayed = x / canvas.width < progress;
+                canvasCtx.fillStyle = isPlayed ? "#00ff00" : "#005000";
+
+                canvasCtx.fillRect(
+                    x,
+                    (canvas.height - barHeight) / 2,
+                    Math.ceil(barWidth),
+                    barHeight
+                );
+                x += barWidth;
+            }
+        }
+
+        // --- Draw Hover Indicator ---
+        if (hoverX !== -1 && audioPlayer.duration) {
+            canvasCtx.fillStyle = "#ffff00"; // Bright yellow for the indicator
+            canvasCtx.fillRect(hoverX, 0, 2, canvas.height); // Draw a 2px wide vertical line
+        }
     }
-
-    // --- NEW: Draw Hover Indicator ---
-    if (hoverX !== -1 && audioPlayer.duration) {
-      canvasCtx.fillStyle = "#ffff00"; // Bright yellow for the indicator
-      canvasCtx.fillRect(hoverX, 0, 2, canvas.height); // Draw a 2px wide vertical line
-    }
-  }
 
   /**
    * Toggles audio playback.
