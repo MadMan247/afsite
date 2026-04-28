@@ -28,7 +28,7 @@ Maybe the cop was just extremely chill. Who knows.
 
 ---
 
-### 🎥 Recording
+### Recording
 
 This performance was recorded in **1080p HD** using a Microsoft Lifecam webcam.  
 Maybe one day that footage will be released — here's a snippet for now:
@@ -39,7 +39,7 @@ Maybe one day that footage will be released — here's a snippet for now:
 
 ---
 
-### 📝 Setlist
+### Setlist
 
 1. The Acid King
 2. Spiraling
@@ -53,5 +53,5 @@ Maybe one day that footage will be released — here's a snippet for now:
 
 ---
 
-### 🎬 Watch the Performance
+### Watch the Performance
 <iframe class="youtube-video" title="Acid Fog, Live at the Depths Backyard (Camcorder Only Cut)" src="https://peer.acidfog.com/videos/embed/83203020-c4d3-4dbe-bb68-d5cc5754d2d1?warningTitle=0" frameborder="0" allowfullscreen="" sandbox="allow-same-origin allow-scripts allow-popups"></iframe>

@@ -21,7 +21,7 @@
     "location": "Midwest Trade Expo, Centennial Park",
     "description": "At George's Midwest Trade Expo, as skaters fly by, bash shit up, and act wild.",
     "image": "AFME09092023.jpg",
-    "link": "/articles/CentennialParkMTE2023.html"
+    "link": "/articles/?article=midwest-trade-expo-2023"
   },
   {
     "date": "2023-02-04",
@@ -45,7 +45,7 @@
     "location": "The Depths Backyard",
     "description": "A concert in the backyard of a Dawson household. Food was not available at the show, but it was intended to be.",
     "image": "AFDB05132023.jpg",
-    "link": "/articles/DepthsBY2023.html"
+    "link": "/articles/?article=live-at-depths-backyard-2023"
   },
   {
     "date": "2023-10-13",
@@ -104,14 +104,6 @@
     "link": "https://peer.acidfog.com/w/uCjqSFG681mj8BJ4pnhvz2"
   },
   {
-    "date": "2024-03-23",
-    "time": "17:00",
-    "location": "Skank Skates, Springfield, IL",
-    "description": "Ethan Wright Skank Skates Birthday Bash, less of a performance, and more of a glorified jam session, with Acid Fog, Reject modernity, and a few other local classics.",
-    "image": "AFSSD.jpg",
-    "link": "#1"
-  },
-  {
     "date": "2024-05-03",
     "time": "21:00",
     "location": "Decatur, IL ",
@@ -160,7 +152,7 @@
     "link": "#1"
   },
   {
-    "date": "2025-01-12",
+    "date": "20250112",
     "time": "19:00",
     "location": "Dumb Recs, Springfield IL",
     "description": "!!Canceled!! Is this becoming an annual thing? Yes, please!",
@@ -168,7 +160,7 @@
     "link": "#1"
   },
   {
-    "date": "2025-01-11",
+    "date": "20250111",
     "time": "19:00",
     "location": "Pizza Records, Jacksonville IL",
     "description": "!!Canceled!! Acid Fog and Scarlet Darlings at Pizza Records.",
@@ -205,7 +197,7 @@
     "location": "Buzzbomb Brewery, Springfield IL",
     "description": "Tradition continues, as Acid Fog performs at the Healing Arts Festival 2025",
     "image": "haf2025.png",
-    "link": "#NotyetReleased"
+    "link": "#NotYetReleased"
   },
   {
     "date": "2025-11-01",
@@ -313,7 +305,7 @@
     "location": "N/A",
     "description": "Beginning of any Acid Fog concerts",
     "image": "afl.jpg",
-    "link": "#"
+    "link": "#1"
   },
   {
     "date": "2099-12-31",
@@ -321,6 +313,6 @@
     "location": "N/A",
     "description": "Bookend of all known gigs as of now",
     "image": "afl.jpg",
-    "link": "#"
+    "link": "#1"
   }
 ]

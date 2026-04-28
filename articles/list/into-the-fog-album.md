@@ -14,7 +14,7 @@ The **FIRST** official album from Acid Fog is now available to listen anywhere y
 Released on **April 20th, 2023**, *Into The Fog* is an album containing **seven tracks**.  
 The title track, *Into The Fog*, is the **second track** on the album.
 
-### 📝 Track List
+### Track List
 
 1. The Acid King
 2. Into The Fog
