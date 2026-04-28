@@ -251,7 +251,7 @@
     "date": "2026-05-18",
     "time": "19:00",
     "location": "Red Flag, 3040 Locust St, St. Louis, MO",
-    "description": "Acid Fog joins Cloud Machine at the Red Flag in St. Louis",
+    "description": "Acid Fog joins Radian and Cloud Machine at the Red Flag in St. Louis",
     "image": "aft1stl2.jpg",
     "link": "#1"
   },
@@ -279,7 +279,30 @@
     "image": "aft1dr.jpg",
     "link": "#1"
   },
-
+  {
+    "date": "2026-05-23",
+    "time": "19:00",
+    "location": "The Seminary Pub, 105 S Seminary St, Galesburg, IL",
+    "description": "Acid Fog goes to The Pub?",
+    "image": "aft1gb1.jpg",
+    "link": "https://www.facebook.com/events/the-pub/spring-into-doom/1566050371362770"
+  },
+  {
+  "date": "2026-05-19",
+  "time": "19:00",
+  "location": "Kansas City, MO",
+  "description": "Acid Fog continues their weekend run with Radian",
+  "image": "aft1f.jpg",
+  "link": "#1"
+},
+  {
+    "date": "2026-05-20",
+    "time": "19:00",
+    "location": "Des Moine, IA",
+    "description": "Acid Fog's stint with Radian comes to an end",
+    "image": "aft1f.jpg",
+    "link": "#1"
+  },
 
 
 
