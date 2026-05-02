@@ -50,5 +50,5 @@ An attempt was made to use empty plastic bags to keep the equipment cool, but it
 
 ---
 
-### 🎥 Video
+### Video
 <iframe class="youtube-video" title="Acid Fog Live at the Midwest Trade Expo, September 9th, 2023" src="https://peer.acidfog.com/videos/embed/47c4d55c-1f7b-4929-9133-87a829d5e39e?warningTitle=0" frameborder="0" allowfullscreen="" sandbox="allow-same-origin allow-scripts allow-popups"></iframe>

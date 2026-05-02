@@ -106,7 +106,7 @@ a {
 }
 
 .article-container.active {
-    max-height: 400vh;
+    max-height: 800vh; /*TODO: Make a better solution, same as events.*/
     opacity: 1;
     margin-top: -0.25rem;
     margin-bottom: 1rem;

@@ -86,7 +86,7 @@ body {
 }
 
 .events-container.active {
-    max-height: 800vh;
+    max-height: 8000vh; /*TODO: find a better solution*/
     opacity: 1;
     overflow: visible;
 }

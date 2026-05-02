@@ -18,7 +18,7 @@ The EP ends with a simple piano tune — *Fading Memories* — performed by **Et
 
 ---
 
-### 🎵 Track List
+### Track List
 
 1. Lost In Time
 2. Away From Home
