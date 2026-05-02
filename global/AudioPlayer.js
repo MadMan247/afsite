@@ -1,5 +1,5 @@
 const SONG_SRC = "/pages/sotm/song.mp3";
-const SONG_TITLE = "Opioid Dose Live at the Richardson Clubhouse (Ed Mix Early2)";
+const SONG_TITLE = "Drawn to Suffer Live at the Richardson Clubhouse (Ed Mix Early3)";
 const SONG_ARTIST = "Acid Fog";
 
 window.addEventListener("DOMContentLoaded", () => {
