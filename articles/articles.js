@@ -1,5 +1,5 @@
 import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
-import { loadAdsInElement } from "/global/adlink.js";
+import { loadAdsInElement } from "/data/global/adlink.js";
 
 const JSON_PATH = "/data/articles/index.json";
 const LIST_PATH = "/articles/list";

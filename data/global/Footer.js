@@ -8,7 +8,7 @@ const footerHTML = `
                >Contact Us!</a></li>
             <li><a href="about.html" title="Who did this?! 🤣🤣🤣">About This Site</a></li>
             <li><a href="#" title="To make some fuckin doom metal, what do you think?">Our Mission</a></li>
-            <li><a href="/pages/AFCast/" title="There's some zany people here">The Cast</a></li>
+            <li><a href="/pages/AFCast" title="There's some zany people here">The Cast</a></li>
             <li><a
                     href="#"
                     title="Yes, this is ours, and not yours."

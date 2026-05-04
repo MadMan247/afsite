@@ -35,7 +35,7 @@ body {
   margin: 0 auto;
   border: 4px solid var(--clr-dark);
   border-radius: .75rem;
-  background-image: url("../data/images/bucket/irsbg.jpg");
+  background-image: url("../images/bucket/irsbg.jpg");
   background-color: var(--clr-light);
   background-repeat: repeat;
   background-size: contain;
