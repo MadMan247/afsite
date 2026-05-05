@@ -46,7 +46,7 @@ const html = `
                     <ul class="dropdown">
                         <li><a href="${SiteLinks.articles}" title="Acid-Fog-based article submissions welcome. Proper credit guaranteed.">Articles</a></li>
                         <li><a href="https://dumbrecs.com/bands/current-bands-2/acid-fog/" title="Check it, on the official Dumb Recs site???">Featured In</a></li>
-                        <li><a href="/articles?id=mellow-ep.md&title=Mellow%3A%20Out%20Now!" title="Article on the most recent Acid Fog release">Out NOW!</a></li>
+                        <li><a href="/articles/?article=mellow-ep" title="Article on the most recent Acid Fog release">Out NOW!</a></li>
                         <li><a href="${SiteLinks.events}" title="What Acid Fog events have you missed? What haven't you missed? No seriously, you better be coming to every event you can. Support your local bands">Events</a></li>
                         <li><a href="https://host.acidfog.com/wiki" title="A Wiki? That seems a little excessive, eh?">AFWiki</a></li>
                     </ul></li>

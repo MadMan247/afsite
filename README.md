@@ -24,6 +24,7 @@
    - [ ] SOTM player/styling
    - [ ] nav bar
    - [ ] unify styling across the webpage
+   - [ ] consolidate often-changed strings
  - More clearly promote AF based services
    - [ ] Peertube
    - [ ] Funkwhale

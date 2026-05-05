@@ -1,7 +1,7 @@
 import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
 import { loadAdsInElement } from "/data/global/adlink.js";
 
-const JSON_PATH = "/data/articles/index.json";
+const JSON_PATH = "/articles/index.json";
 const LIST_PATH = "/articles/list";
 const TRANS_TIME = 400;
 
@@ -92,7 +92,7 @@ export async function loadArticle(id) {
 
     const images = articleRender.querySelectorAll("img");
     for (const img of images) {
-      img.stye.cursor = "zoom-in";
+      img.style.cursor = "zoom-in";
 
       img.addEventListener("click", () => {
         img.requestFullscreen();
