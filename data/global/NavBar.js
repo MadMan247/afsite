@@ -53,9 +53,7 @@ const html = `
                 <li><a href="#">Follow It</a>
                     <ul class="dropdown">
                         <li><a href="https://www.instagram.com/acid_fog_official_87/" title="Acid Fog is most active here">Instagram</a></li>
-                        <li><a href="https://x.com/dumb_records/status/1768826427464384798" title="There is no Acid Fog Twitter, so this counts for that">Twitter</a></li>
                         <li><a href="https://www.facebook.com/p/Acid-Fog-100092044354492/" title="For your mom + please forward her to Mr. YMST">Facebook</a></li>
-                        <li><a href="${SiteLinks.contactUs}">Contact</a></li>
                     </ul></li>
     </ul>
 `;
