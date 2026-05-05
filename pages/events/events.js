@@ -1,4 +1,4 @@
-const EVENT_INDEX_PATH = "/data/events/index.json";
+const EVENT_INDEX_PATH = "/pages/events/index.json";
 const EVENT_IMG_PATH = "/data/images/bucket/";
 const TRANS_TIME = 500; // in millis
 const EL_IDS = {
@@ -177,4 +177,10 @@ fetchAllEvents().then(() => {
   document.getElementById("loader").remove();
   eventStore.get(EL_IDS.upcomingDrpdwn).style = "";
   eventStore.get(EL_IDS.pastDrpdwn).style = "";
+
+  //Auto open if there is more than one event ( we HATE the bookend)
+  const upcomingContainer = eventStore.get(EL_IDS.upcomingEventsContainer);
+  if (upcomingContainer.children.length > 1) {
+    eventStore.get(EL_IDS.upcomingBtn).click();
+  }
 });
