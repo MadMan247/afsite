@@ -25,22 +25,23 @@ const html = `
                 </li>
                 <li><a href="#">Hear It</a>
                     <ul class="dropdown">
+                        <li><a href="${SiteLinks.bandcamp}" title="Our preferred source">Band Camp</a></li>
                         <li><a href="${SiteLinks.sotm}" title="Maybe not so monthly, and a little more quarterly">Song of the Month</a></li>
-                        <li><a href="${SiteLinks.funkwhale}" title="Acid Fog Related Music instance. I promise it isn't the name of a bad NFT series">Funkwhale</a></li>
                         <li><a href="${SiteLinks.spotify}" title="At this point paying for spotify feels like an investment">Spotify</a></li>
                         <li><a href="${SiteLinks.amazon}" title="More used than Pandora">Amazon Music</a></li>
                         <li><a href="${SiteLinks.ytMusic}" title="classic">YouTube Music</a></li>
+                        <li><a href="${SiteLinks.funkwhale}" title="Acid Fog Related Music instance. I promise it isn't the name of a bad NFT series">Funkwhale</a></li>
                     </ul></li>
                 <li><a href="#">Buy It</a>
                     <ul class="dropdown">
-                        <li><a href="${SiteLinks.bandcamp}" title="Thank you in advance">Band Camp</a></li>
+                        <li><a href="${SiteLinks.bandcamp}/merch" title="Thank you in advance">Band Camp</a></li>
 <!--                        <li><a href="#" title="Still needs set up">Merch Store</a></li>-->
                     </ul></li>
                 <li><a href="#">Watch It</a>
                     <ul class="dropdown">
                         <li><a href="${SiteLinks.peertube}" title="&quot;What is this xvideos knockoff looking-ass site&quot;">AF Tube</a></li>
-                        <li><a href="https://www.youtube.com/@acidfogtapesofficial" title="Behind the scenes of the lives of Acid Fog">The Tapes</a></li>
                         <li><a href="https://www.youtube.com/@AcidFogOfficial87" title="The Official Acid Fog Youtube Channel">Acid Fog Official</a></li>
+                        <li><a href="https://www.youtube.com/@acidfogtapesofficial" title="Behind the scenes of the lives of Acid Fog">The Tapes</a></li>
                     </ul></li>
                 <li><a href="#">Check It</a>
                     <ul class="dropdown">
@@ -54,6 +55,7 @@ const html = `
                     <ul class="dropdown">
                         <li><a href="https://www.instagram.com/acidfogofficial" title="Acid Fog is most active here">Instagram</a></li>
                         <li><a href="https://www.facebook.com/p/Acid-Fog-100092044354492/" title="For your mom + please forward her to Mr. YMST">Facebook</a></li>
+                        <li><a href="https://www.tiktok.com/@acidfog87" title="I'm not seeing enough movement - TNFB">TikTok</a></li>
                     </ul></li>
     </ul>
 `;
