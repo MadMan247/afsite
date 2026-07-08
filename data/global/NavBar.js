@@ -34,7 +34,7 @@ const html = `
                     </ul></li>
                 <li><a href="#">Buy It</a>
                     <ul class="dropdown">
-                        <li><a href="${SiteLinks.bandcamp}/merch" title="Thank you in advance">Band Camp</a></li>
+                        <li><a href="${SiteLinks.bandcamp}merch" title="Thank you in advance">MERCH</a></li>
 <!--                        <li><a href="#" title="Still needs set up">Merch Store</a></li>-->
                     </ul></li>
                 <li><a href="#">Watch It</a>
