@@ -1,5 +1,15 @@
 /* Place all global styles here this time, silly goose */
+@font-face {
+    font-family: "Gelasio";
+    src: url("/data/global/Gelasio-Regular.ttf") format("truetype");
+    font-weight: 400;
+}
 
+@font-face {
+    font-family: "Gelasio";
+    src: url("/data/global/Gelasio-Bold.ttf") format("truetype");
+    font-weight: 700;
+}
 :root {
     --primary: something;
     --secondary: something;
@@ -13,11 +23,13 @@
 
 
     --text: #fff;
-    --font-default: Arial, sans-serif;
+    --font-default: "Gelasio", serif;
     --font-size: 1rem;
 
     background: #333333;
 
+    font-family: "Gelasio", serif;
+    font-weight: 400;
 }
 
 html {

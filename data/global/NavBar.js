@@ -34,7 +34,7 @@ const html = `
                 <li><a href="#">Buy It</a>
                     <ul class="dropdown">
                         <li><a href="${SiteLinks.bandcamp}" title="Thank you in advance">Band Camp</a></li>
-                        <li><a href="#" title="Still needs set up">Merch Store</a></li>
+<!--                        <li><a href="#" title="Still needs set up">Merch Store</a></li>-->
                     </ul></li>
                 <li><a href="#">Watch It</a>
                     <ul class="dropdown">
@@ -52,7 +52,7 @@ const html = `
                     </ul></li>
                 <li><a href="#">Follow It</a>
                     <ul class="dropdown">
-                        <li><a href="https://www.instagram.com/acid_fog_official_87/" title="Acid Fog is most active here">Instagram</a></li>
+                        <li><a href="https://www.instagram.com/acidfogofficial" title="Acid Fog is most active here">Instagram</a></li>
                         <li><a href="https://www.facebook.com/p/Acid-Fog-100092044354492/" title="For your mom + please forward her to Mr. YMST">Facebook</a></li>
                     </ul></li>
     </ul>
